@@ -1,9 +1,25 @@
 # Git Workflow Guide
 
+Git is a version management system.  
+GitHub is a way to collaboratively save Git versions in the cloud. 
+
 
 ## Setup
 
-When working with github, it is a good idea to connect your github account, see our [SSH Key Guide](gitSSHGuide.md)
+### Installing Git
+#### Windows
+Follow instructions [here](https://git-scm.com/install/windows)
+#### Mac
+The best in my opinion is to use [Homebrew Package Manager](https://brew.sh/).
+- Install homebrew 
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+- Then install Git
+```bash
+brew install git
+```
+When working with github, it is a good idea to connect your computer to your GitHub account with an SSH key, so you don't need to type your password every time you push and pull. see our [SSH Key Guide](gitSSHGuide.md)
 
 
 ## How to get the most recent changes
@@ -71,7 +87,7 @@ git status
 
 - We push every time we implement something new (often).
 - We don't push until the program runs without errors. 
-- Commi messages are descriptive, in english and imperative (bydeform). For example "Add Pizza class", "Update Toppingn to take multiple toppings" etc.
+- Commit messages are descriptive, in english and imperative (bydeform). For example "Add Pizza class", "Update Toppingn to take multiple toppings" etc.
 
 ### Workflows we don't use yet but we might use in the future
 

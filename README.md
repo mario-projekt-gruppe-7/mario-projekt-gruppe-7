@@ -1,6 +1,6 @@
 # Velkommen til Gruppe 7s Mario Projekt
 
-Dette repository indeholder vores gruppeprojekt i Mario. For at vi kan arbejde sammen effektivt, følg guiden nedenfor for at komme i gang.
+Dette repository indeholder vores gruppeprojekt i Mario. Vi har valgt at bruge Github. Følg guiden herunder for at være med.
 
 ---
 
@@ -12,7 +12,7 @@ Hvis du ikke allerede har en GitHub-konto, kan du oprette en gratis her: [GitHub
 
 ## 2. Tilføj din SSH-nøgle
 
-For at kunne pushe kode til GitHub, skal du forbinde din GitHub-konto til din computer via SSH.  
+For at gøre det nemmere at pushe kode til GitHub, skal du forbinde din GitHub-konto til din computer via SSH.  
 Se vores guide: [SSH Guide](src/docs/gitSSHGuide.md)
 
 ---
