@@ -37,6 +37,7 @@ When working with github, it is a good idea to connect your github account, see 
 
 - We push every time we implement something new (often).
 - We don't push until the program runs without errors. 
+- Commi messages are descriptive, in english and imperative (bydeform). For example "Add Pizza class", "Update Toppingn to take multiple toppings" etc.
 
 ## Workflows we don't use yet but we might use in the future
 
