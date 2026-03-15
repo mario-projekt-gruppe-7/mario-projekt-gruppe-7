@@ -1,6 +1,13 @@
 # Velkommen til Gruppe 7s Mario Projekt
 
-Dette repository indeholder vores gruppeprojekt i Mario. Vi har valgt at bruge Github. Følg guiden herunder for at være med.
+Dette repository indeholder vores gruppeprojekt i Mario. 
+
+Er du udvikler, se vores [wiki](https://github.com/mario-projekt-gruppe-7/mario-projekt-gruppe-7/wiki)
+
+
+Vi har valgt at bruge Github. Følg guiden herunder for at være med.
+
+
 
 ---
 
