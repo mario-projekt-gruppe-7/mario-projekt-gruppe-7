@@ -9,8 +9,16 @@ Read the official guide [here](https://docs.github.com/en/authentication/connect
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-- You will get "Enter a file in which to save the key". Just press `Enter` for default.
-- You will be asked for a password. It is convenient to just skip this with `Enter`, but the ideal thing would be to use an SSH agent so you don't have to type it every time. See the official guide at the top. 
+- You will get "Enter a file in which to save the key". Just press `Enter` for default. 
+
+You will be asked for a passphrase when using an SSH key. Some people skip setting a passphrase (just press Enter) to avoid typing it, but this is not very secure: a virus or anyone who gains access to your computer could use your private key to push to your repositories.
+On the other hand, you don’t want to type the passphrase every time you push or pull. The solution is to use an **SSH agent**, which keeps the decrypted key in memory, so you only type the passphrase once per session (once every time you start your computer).
+
+- Folow the official guide [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). 
+
+
+
+
 - You now need to find your public key. It should contain -pub. Find it this way:
 ```bash
 cat ~/.ssh/id_ed25519.pub
