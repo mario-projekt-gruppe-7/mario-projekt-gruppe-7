@@ -7,6 +7,9 @@ public class Ordre {
         this.pizzaNr = pizzaNr;
     }
 
+    public double getPris(MenuLinje menuLinje){
+        return antal * menuLinje.getPris();
+    }
     public int getAntal() {
         return antal;
     }
