@@ -5,6 +5,7 @@ public class Menu {
 
     public Menu(ArrayList<MenuLinje> pizzaer) {
         this.pizzaer = pizzaer;
+
     }
 
     public ArrayList<MenuLinje> getPizzaer() {

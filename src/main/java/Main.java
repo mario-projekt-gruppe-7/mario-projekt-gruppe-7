@@ -4,7 +4,6 @@ import java.util.Arrays;
 public class Main {
     static void main(String[] args) {
 
-
         Pizza[] pizzaer = {
                 new Pizza("Margerita", new ArrayList<String>(Arrays.asList("ost", "tomatsovs")), 90.00, 15.00),
                 new Pizza("Pepperoni", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "pepperoni")), 90.00, 15.00),
