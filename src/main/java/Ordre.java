@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Ordre {
-private ArrayList <OrdreLinje> ordreLinje;
+private ArrayList <OrdreLinje> ordreLinjer;
 private double afhentningTidspunkt;
 private String ordreStatus;
 
-    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinje) {
+    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer) {
         afhentningTidspunkt = afhentningTidspunkt;
-        this.ordreLinje = ordreLinje;
+        this.ordreLinjer = ordreLinjer;
     }
 
     public double getAfhentningTidspunkt() {
@@ -15,6 +15,6 @@ private String ordreStatus;
     }
 
     public ArrayList<OrdreLinje> getOrdre() {
-        return ordreLinje;
+        return ordreLinjer;
     }
 }
