@@ -1,17 +1,20 @@
+import java.util.ArrayList;
+
 public class Ordre {
-    private int antal;
-    private int pizzaNr;
+private ArrayList <OrdreLinje> ordreLinje;
+private double afhentningTidspunkt;
+private String ordreStatus;
 
-    public Ordre(int antal, int pizzaNr) {
-        this.antal = antal;
-        this.pizzaNr = pizzaNr;
+    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinje) {
+        afhentningTidspunkt = afhentningTidspunkt;
+        this.ordreLinje = ordreLinje;
     }
 
-    public int getAntal() {
-        return antal;
+    public double getAfhentningTidspunkt() {
+        return afhentningTidspunkt;
     }
 
-    public int getPizzaNr() {
-        return pizzaNr;
+    public ArrayList<OrdreLinje> getOrdre() {
+        return ordreLinje;
     }
 }
