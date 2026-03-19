@@ -22,4 +22,10 @@ public class Pizza {
     public double getTilberedningsTid() {
         return tilberedningsTid;
     }
+    @Override
+    public String toString() {
+        return ("pizza: " + getNavn() + "  tilberedningstid: " + getTilberedningsTid());
+
+
+    }
 }
