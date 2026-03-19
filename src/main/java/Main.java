@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
-    static void main(String[] args) {
+    public static void main(String[] args) {
 
         Pizza[] pizzaer = {
                 new Pizza("Margerita", new ArrayList<String>(Arrays.asList("ost", "tomatsovs")), 90.00, 15.00),
@@ -28,7 +28,15 @@ public class Main {
 
 
         for (Pizza pizza : pizzaer) {
-            System.out.println("pizza: " + pizza.getNavn() + "  tilberedningstid: " + pizza.getTilberedningsTid());
+            System.out.println(pizza);
         }
+
+        OrdreLinje ordreLinje1 = new OrdreLinje(4, 5);
+        OrdreLinje ordreLinje2 = new OrdreLinje(4, 6);
+        Ordre ordre1 = new Ordre(15, new ArrayList<>(Arrays.asList(ordreLinje1,ordreLinje2)));
+
+        System.out.println(ordre1.antalPizzaer());
+
+
     }
 }

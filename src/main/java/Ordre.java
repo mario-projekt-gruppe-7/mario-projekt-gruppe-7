@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Ordre {
-private ArrayList <OrdreLinje> ordreLinjer;
-private double afhentningTidspunkt;
-private String ordreStatus;
+    private ArrayList<OrdreLinje> ordreLinjer;
+    private double afhentningTidspunkt;
+    private String ordreStatus;
 
     public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer) {
         afhentningTidspunkt = afhentningTidspunkt;
@@ -16,5 +16,15 @@ private String ordreStatus;
 
     public ArrayList<OrdreLinje> getOrdre() {
         return ordreLinjer;
+    }
+
+    public int antalPizzaer() {
+        int antalPizzaer =0;
+
+
+        for (OrdreLinje linje : ordreLinjer) {
+            antalPizzaer += linje.getAntal();
+        }
+        return antalPizzaer;
     }
 }
