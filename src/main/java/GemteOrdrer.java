@@ -22,4 +22,9 @@ public class GemteOrdrer {
         }
         return omsætning;
     }
+
+    public void tilføjOrdre (Ordre ordre) {
+        ordreListe.add(ordre);
+
+    }
 }

@@ -45,5 +45,10 @@ public class Main {
         GemteOrdrer gemteOrdrer = new GemteOrdrer(new ArrayList<>(Arrays.asList(ordre1, ordre2)), menu);
 
         System.out.println(gemteOrdrer.omsætning());
+
+        gemteOrdrer.tilføjOrdre(ordre1);
+
+        System.out.println(gemteOrdrer.omsætning());
     }
+
 }
