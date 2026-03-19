@@ -14,4 +14,8 @@ public class OrdreLinje {
     public int getPizzaNr() {
         return pizzaNr;
     }
+
+    public double getPris( Menu menu) {
+        return menu.getMenuLinjer().get(pizzaNr).getPris() * antal;
+    }
 }

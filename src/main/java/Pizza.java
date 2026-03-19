@@ -5,7 +5,7 @@ public class Pizza {
     private ArrayList<String> toppings;
     private double tilberedningsTid;
 
-    public Pizza(String navn, ArrayList<String> toppings, double pris, double tilberedningsTid) {
+    public Pizza(String navn, ArrayList<String> toppings, double tilberedningsTid) {
         this.navn = navn;
         this.toppings = toppings;
         this.tilberedningsTid = tilberedningsTid;

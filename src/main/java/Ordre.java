@@ -5,9 +5,10 @@ public class Ordre {
     private double afhentningTidspunkt;
     private String ordreStatus;
 
-    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer) {
+    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus) {
         afhentningTidspunkt = afhentningTidspunkt;
         this.ordreLinjer = ordreLinjer;
+        this.ordreStatus = ordreStatus;
     }
 
     public double getAfhentningTidspunkt() {
@@ -26,5 +27,17 @@ public class Ordre {
             antalPizzaer += linje.getAntal();
         }
         return antalPizzaer;
+    }
+
+    public String getOrdreStatus() {
+        return ordreStatus;
+    }
+
+    public double getTotal(Menu menu) {
+        double total = 0;
+        for (OrdreLinje ordreLinje : ordreLinjer) {
+            total += ordreLinje.getPris(menu);
+        }
+        return total;
     }
 }

@@ -1,2 +1,25 @@
+import java.util.ArrayList;
+
 public class GemteOrdrer {
+    private ArrayList<Ordre> ordreListe;
+    private Menu menu;
+
+    public GemteOrdrer(ArrayList<Ordre> ordreListe, Menu menu) {
+        this.ordreListe = ordreListe;
+        this.menu = menu;
+    }
+
+    public ArrayList<Ordre> getOrdreListe() {
+        return ordreListe;
+    }
+
+    public double omsætning () {
+        double omsætning = 0;
+        for (Ordre ordre : ordreListe) {
+            if (ordre.getOrdreStatus() == "betalt") {
+                omsætning += ordre.getTotal(menu);
+            }
+        }
+        return omsætning;
+    }
 }

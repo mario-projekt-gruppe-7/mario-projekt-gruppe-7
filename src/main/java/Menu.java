@@ -8,7 +8,7 @@ public class Menu {
 
     }
 
-    public ArrayList<MenuLinje> getPizzaer() {
+    public ArrayList<MenuLinje> getMenuLinjer() {
         return pizzaer;
     }
 }
