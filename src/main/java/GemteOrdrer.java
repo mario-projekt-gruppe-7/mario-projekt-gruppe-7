@@ -28,7 +28,8 @@ public class GemteOrdrer {
         return omsætning;
     }
 
-    public void add(Ordre ordre) {
+    public void tilføjOrdre (Ordre ordre) {
         ordreListe.add(ordre);
+
     }
 }

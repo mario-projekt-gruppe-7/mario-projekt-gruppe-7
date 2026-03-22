@@ -4,4 +4,5 @@ public class Main {
         menu.bygStandardMenu();
         UI.mainMenu(menu, new GemteOrdrer(menu)); // systemet starter i main menu
     }
+
 }
