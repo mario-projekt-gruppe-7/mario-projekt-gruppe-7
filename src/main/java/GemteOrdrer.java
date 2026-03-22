@@ -9,6 +9,11 @@ public class GemteOrdrer {
         this.menu = menu;
     }
 
+    public GemteOrdrer(Menu menu) {
+        this.menu = menu;
+        this.ordreListe = new ArrayList<>();
+    }
+
     public ArrayList<Ordre> getOrdreListe() {
         return ordreListe;
     }
