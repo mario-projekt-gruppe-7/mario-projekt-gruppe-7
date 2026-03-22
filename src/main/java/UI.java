@@ -28,6 +28,6 @@ public class UI {
                 new OrdreLinje(4, 6)
         )), "betalt");
 
-        gemteOrdrer.add(ordre1);
+        gemteOrdrer.tilføjOrdre(ordre1);
     }
 }
