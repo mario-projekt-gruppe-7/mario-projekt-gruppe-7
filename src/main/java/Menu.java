@@ -10,16 +10,16 @@ public class Menu {
 
     public void bygStandardMenu() {
         MenuLinje[] standardPizzaer = {
-                new MenuLinje(new Pizza("Margerita", new ArrayList<String>(Arrays.asList("ost", "tomatsovs")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Pepperoni", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "pepperoni")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Vesuvio", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "skinke")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Amerikaner", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "oksefars", "oregano")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Carbona", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "kødsovs", "spaghetti", "cocktailpølser", "oregano")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Denis", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "skinke", "pepperoni", "cocktailpølser", "oregano")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Berthil", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "bacon", "oregano")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Silvia", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "pepperoni", "rød peber", "løg", "oliven", "oregano")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Victoria", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "skinke", "ananas", "champingon", "løg", "oregano")), 15.00), 100, 1),
-                new MenuLinje(new Pizza("Mafia", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "pepperoni", "bacon", "løg", "oregano")), 15.00), 100, 1)
+                new MenuLinje(new Pizza("Margerita", new ArrayList<String>(Arrays.asList("ost", "tomatsovs")), 15.00), 75, 1),
+                new MenuLinje(new Pizza("Pepperoni", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "pepperoni")), 15.00), 85, 2),
+                new MenuLinje(new Pizza("Vesuvio", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "skinke")), 15.00), 85, 3),
+                new MenuLinje(new Pizza("Amerikaner", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "oksefars", "oregano")), 15.00), 95, 4),
+                new MenuLinje(new Pizza("Carbona", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "kødsovs", "spaghetti", "cocktailpølser", "oregano")), 15.00), 100, 5),
+                new MenuLinje(new Pizza("Denis", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "skinke", "pepperoni", "cocktailpølser", "oregano")), 15.00), 100, 6),
+                new MenuLinje(new Pizza("Berthil", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "bacon", "oregano")), 15.00), 95, 7),
+                new MenuLinje(new Pizza("Silvia", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "pepperoni", "rød peber", "løg", "oliven", "oregano")), 15.00), 105, 8),
+                new MenuLinje(new Pizza("Victoria", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "skinke", "ananas", "champingon", "løg", "oregano")), 15.00), 100, 9),
+                new MenuLinje(new Pizza("Mafia", new ArrayList<String>(Arrays.asList("ost", "tomatsovs", "pepperoni", "bacon", "løg", "oregano")), 15.00), 100, 10)
         };
         for (MenuLinje menuLinje : standardPizzaer) {
             tilføjMenuLinje(menuLinje);
@@ -32,6 +32,15 @@ public class Menu {
 
     public void tilføjMenuLinje(MenuLinje menuLinje) {
         pizzaer.add(menuLinje);
+    }
+
+    @Override
+    public String toString (){
+        String menuStreng = "menu: \n";
+        for (MenuLinje menuLinje : pizzaer) {
+            menuStreng += menuLinje + "\n";
+        }
+        return menuStreng;
     }
 
 }
