@@ -20,4 +20,8 @@ public class MenuLinje {
     public int getNr() {
         return nr;
     }
+
+    public String toString (){
+        return nr + " " + pizza.getNavn() + " " + pris;
+    }
 }
