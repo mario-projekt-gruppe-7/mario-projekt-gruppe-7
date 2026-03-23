@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GemteOrdrer {
     private ArrayList<Ordre> ordreListe;
@@ -31,5 +32,20 @@ public class GemteOrdrer {
     public void tilføjOrdre (Ordre ordre) {
         ordreListe.add(ordre);
 
+    }
+
+    // count if (tæl hvor mange gange en pizza er nævnt i arrayliste gemteordrer)
+    public String topTrePizza (){
+        HashMap<String, Integer> pizzaScoreTable = new HashMap<>();
+        for (Ordre ordre : ordreListe) {
+            for (OrdreLinje ordreLinje : ordre.getOrdre()) {
+                String pizzaNr = String.valueOf (ordreLinje.getPizzaNr());
+                if (pizzaScoreTable.containsKey(pizzaNr)) {
+                    pizzaScoreTable.put(pizzaNr, pizzaScoreTable.get(pizzaNr) + ordreLinje.getAntal());
+                } else {
+                    pizzaScoreTable.put(pizzaNr, ordreLinje.getAntal());
+                }
+            }
+        }
     }
 }

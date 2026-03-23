@@ -37,6 +37,7 @@ public class UI {
                 )), "betalt");
                 gemteOrdrer.tilføjOrdre(ordre1);
                 System.out.println("din ordre er nu gemt");
+                break; // se om det rigtigt?
             }
         }
     }
