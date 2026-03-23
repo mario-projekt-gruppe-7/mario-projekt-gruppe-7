@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -6,6 +7,23 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrdreTest {
+
+
+    private Ordre ordre;
+    private Menu menu;
+
+    @BeforeEach
+    void setUp() {
+        OrdreLinje ordrelinje = new OrdreLinje(3, 6);
+        OrdreLinje ordrelinje2 = new OrdreLinje(4, 9);
+        ArrayList<OrdreLinje> liste = new ArrayList<>();
+        liste.add(ordrelinje);
+        liste.add(ordrelinje2);
+        ordre = new Ordre(10,liste,"");
+        menu = new Menu();
+        menu.bygStandardMenu();
+    }
+
 
     @Test
     void getAfhentningTidspunkt() {
@@ -20,12 +38,7 @@ class OrdreTest {
     @Test
     void antalPizzaer() {
 
-        OrdreLinje ordrelinje = new OrdreLinje(3, 6);
-        OrdreLinje ordrelinje2 = new OrdreLinje(4, 9);
-        ArrayList<OrdreLinje> liste = new ArrayList<>();
-        liste.add(ordrelinje);
-        liste.add(ordrelinje2);
-        Ordre ordre = new Ordre(10,liste,"");
+        // arrange
         int expected = 7;
 
         //act
@@ -45,5 +58,16 @@ class OrdreTest {
 
     @org.junit.jupiter.api.Test
     void getTotal() {
+
+        // arrange
+        double expected = 3* menu.getMenuLinjer().get(6).getPris() + 4 * menu.getMenuLinjer().get(9).getPris();
+
+        //act
+        double actual = ordre.getTotal(menu);
+
+        //assert
+        Assert.assertEquals(expected, actual, 0.0001);
+
+
     }
 }
