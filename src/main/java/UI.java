@@ -12,6 +12,11 @@ public class UI {
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
                 switch (choice) {
+                    case 3 -> {
+                        scanner.nextLine();
+                        tilføjOrdre(gemteOrdrer);
+                    }
+
                     case 2 -> printMenu(menu);
                     case 1 -> {
                         placeOrderUI(scanner, menu, gemteOrdrer);
@@ -42,5 +47,19 @@ public class UI {
     }
     public static void printMenu (Menu menu){
         System.out.println(menu);
+    }
+
+    public static void tilføjOrdre(GemteOrdrer gemteOrdrer) {
+        boolean flere = true;
+        while (flere) {
+        System.out.println("skriv nummeret på pizzaen du vil have: ");
+        System.out.println("skriv antallet af pizzaer du vil have: ");
+        System.out.println("Vil du have flere pizzaer? skriv ja eller nej");
+        flere = (scanner.nextLine() .equals("ja"));
+    }
+
+        System.out.println("Du har bestilt: " );
+
+
     }
 }
