@@ -9,6 +9,10 @@ public class MenuLinje {
         this.nr = nr;
     }
 
+    public void setPris(double pris) {
+        this.pris = pris;
+    }
+
     public Pizza getPizza() {
         return pizza;
     }

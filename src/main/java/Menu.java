@@ -43,4 +43,11 @@ public class Menu {
         return menuStreng;
     }
 
+    public void setPris(int nummer, double pris) {
+        for (MenuLinje menuLinje: pizzaer) {
+            if (menuLinje.getNr() == nummer) {
+                menuLinje.setPris(pris);
+            }
+        }
+    }
 }
