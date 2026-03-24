@@ -46,9 +46,9 @@ public class Ordre {
     public String toString() {
         String string = "";
         for (OrdreLinje ordrelinje : ordreLinjer) {
-            string += ordrelinje.toString(menu);
+            string += ordrelinje.toString(menu) + "\n";
         }
-        string += "\nI alt:" + Double.toString(getTotal(menu)) + "kr";
+        string += "I alt: " + Double.toString(getTotal(menu)) + "kr\n";
         return string;
     }
 }
