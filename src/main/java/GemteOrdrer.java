@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class GemteOrdrer {
     private ArrayList<Ordre> ordreListe;
     private Menu menu;
@@ -39,5 +40,9 @@ public class GemteOrdrer {
             string += ordre.toString() +"\n";
         }
         return string;
+    }
+
+
+    public String topTrePizza(){
     }
 }

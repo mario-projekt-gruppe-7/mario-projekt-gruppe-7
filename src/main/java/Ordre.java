@@ -48,7 +48,20 @@ public class Ordre {
         for (OrdreLinje ordrelinje : ordreLinjer) {
             string += ordrelinje.toString(menu) + "\n";
         }
-        string += "I alt: " + Double.toString(getTotal(menu)) + "kr\n";
+        string += "I alt: " + Double.toString(getTotal(menu)) + "kr\npublic String topTrePizza (){\n" +
+                "        HashMap<String, Integer> pizzaScoreTable = new HashMap<>();\n" +
+                "        for (Ordre ordre : ordreListe) {\n" +
+                "            for (OrdreLinje ordreLinje : ordre.getOrdre()) {\n" +
+                "                String pizzaNr = String.valueOf (ordreLinje.getPizzaNr());\n" +
+                "                if (pizzaScoreTable.containsKey(pizzaNr)) {\n" +
+                "                    pizzaScoreTable.put(pizzaNr, pizzaScoreTable.get(pizzaNr) + ordreLinje.getAntal());\n" +
+                "                } else {\n" +
+                "                    pizzaScoreTable.put(pizzaNr, ordreLinje.getAntal());\n" +
+                "                }\n" +
+                "            }\n" +
+                "        }\n" +
+                "        return topTrePizza();\n" +
+                "    }";
         return string;
     }
 }

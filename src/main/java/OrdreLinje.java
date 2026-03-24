@@ -16,7 +16,13 @@ public class OrdreLinje {
     }
 
     public double getPris( Menu menu) {
-        return menu.getMenuLinjer().get(pizzaNr-1).getPris() * antal;
+        double pris = 0;
+        for (MenuLinje menuLinje : menu.getMenuLinjer()) {
+            if (menuLinje.getNr() == pizzaNr) {
+                pris = menuLinje.getPris() * antal;
+            }
+        }
+        return pris;
     }
     public String toString(Menu menu) {
         return String.format("%s x %s ... %s kr", antal, pizzaNr, getPris(menu));

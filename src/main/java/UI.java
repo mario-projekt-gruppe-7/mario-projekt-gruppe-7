@@ -14,18 +14,31 @@ public class UI {
     }
 
     void mainMenu() {
-        System.out.println("velkommen til Marios Pizza \uD83C\uDF55  \n" +
-                "Skriv 0 for exit.\n" +
-                "Skriv 1 for opret en ordre\n" +
-                "Skriv 2 for at printe menu\n" +
-                "Skriv 3 for at printe alle ordrer\n");
         boolean fortsæt = true;
-        while(fortsæt) {
+        boolean showMenu = true;
+        while (fortsæt) {
+            if (showMenu) {
+                System.out.println("velkommen til Marios Pizza \uD83C\uDF55  \n" +
+                        "Skriv 0 for exit.\n" +
+                        "Skriv 1 for opret en ordre\n" +
+                        "Skriv 2 for at printe menu\n" +
+                        "Skriv 3 for at printe alle ordrer\n"+
+                        "Skriv 4 for at printe top 3 solgte pizzaer\n");
+            }
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
                 switch (choice) {
-                    case 3 -> printOrdreLinjer();
-                    case 2 -> printMenu();
+                    case 4 -> printTopTrePizza();
+                    case 3 -> {
+                        scanner.nextLine();
+                        printOrdreLinjer();
+                        showMenu = true;
+                    }
+                    case 2 -> {
+                        scanner.nextLine();
+                        printMenu();
+                        showMenu = true;
+                    }
                     case 1 -> {
                         scanner.nextLine();
                         tilføjOrdre();
@@ -98,5 +111,9 @@ public class UI {
 
     public void printOrdreLinjer (){
         System.out.println(gemteOrdrer.toString(menu));
+    }
+
+    public void printTopTrePizza(){
+        System.out.println(gemteOrdrer.topTrePizza());
     }
 }
