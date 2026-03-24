@@ -32,4 +32,12 @@ public class GemteOrdrer {
         ordreListe.add(ordre);
 
     }
+
+    public String toString (Menu menu){
+        String string = "";
+        for (Ordre ordre : ordreListe){
+            string += ordre.toString() +"\n";
+        }
+        return string;
+    }
 }
