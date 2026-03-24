@@ -22,6 +22,6 @@ public class MenuLinje {
     }
 
     public String toString (){
-        return nr + " " + pizza.getNavn() + " " + pris;
+        return nr + " " + pizza.getNavn() + pizza.getToppings()+" " + pris + " kr";
     }
 }
