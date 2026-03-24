@@ -4,5 +4,6 @@ public class Main {
         menu.bygStandardMenu();
         UI ui = new UI(menu);
         ui.mainMenu();// systemet starter i main menu
+
     }
 }

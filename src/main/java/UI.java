@@ -61,8 +61,58 @@ public class UI {
     public void printMenu() {
         System.out.println(menu);
         System.out.println("enter for exit");
+
+
+
+
+        System.out.println("1 hvis du vil ændre pris");
+
+        int beslutningsNummer;
+
+        while (true) {
+            if (scanner.hasNext()) {
+                beslutningsNummer = scanner.nextInt();
+                scanner.nextLine();
+                break;
+            }
+        }
+        switch (beslutningsNummer) {
+            case 0-> {
+                redigerMenu();
+            }
+        }
         scanner.nextLine();
     }
+
+    public void redigerMenu() {
+
+        System.out.println("skriv det nummer du gerne vil redigere prisen på");
+        int nummer;
+        double pris;
+
+        while (true) {
+            if (scanner.hasNext()) {
+                nummer = scanner.nextInt();
+                scanner.nextLine();
+                break;
+            }
+        }
+        while (true) {
+            if (scanner.hasNext()) {
+                pris = scanner.nextDouble();
+                scanner.nextLine();
+                break;
+            }
+        }
+        menu.setPris(nummer, pris);
+        for (MenuLinje menuLinje: menu.getMenuLinjer()) {
+            if (menuLinje.getNr() == nummer) {
+                System.out.println("du har opdateret prisen på:"+ menuLinje.getPizza().getNavn() +"\n" + menu.toString());
+            }
+        }
+
+    }
+
 
     public void tilføjOrdre() {
         boolean flere = true;
@@ -119,5 +169,8 @@ public class UI {
         System.out.println(gemteOrdrer.toString(menu));
         System.out.println("enter for exit");
         scanner.nextLine();
+
+
     }
+
 }
