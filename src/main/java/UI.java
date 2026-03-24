@@ -3,9 +3,17 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class UI {
-    static private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+    private Menu menu;
+    private GemteOrdrer gemteOrdrer;
 
-    static void mainMenu(Menu menu, GemteOrdrer gemteOrdrer) {
+    public UI (Menu menu) {
+        scanner = new Scanner(System.in);
+        this.menu = menu;
+        gemteOrdrer = new GemteOrdrer(menu);
+    }
+
+    void mainMenu() {
         System.out.println("velkommen til Marios Pizza \uD83C\uDF55  \n" +
                 "Skriv 0 for exit.\n" +
 //                "Skriv 1 UNDER CONSTRUCTION\n" +
@@ -18,9 +26,9 @@ public class UI {
                 switch (choice) {
                     case 3 -> {
                         scanner.nextLine();
-                        tilføjOrdre(menu, gemteOrdrer);
+                        tilføjOrdre();
                     }
-                    case  2 -> printMenu(menu);
+                    case  2 -> printMenu();
 //                    case 1 -> {
 //                        placeOrderUI(scanner, menu, gemteOrdrer);
 //                        System.out.println("nu har du lavet en ordre");
@@ -34,7 +42,7 @@ public class UI {
             }
         }
     }
-    private static void placeOrderUI(Scanner scanner, Menu menu, GemteOrdrer gemteOrdrer) {
+    private void placeOrderUI() {
         boolean fortsæt = true;
         System.out.println("skriv hvad ordren er: ");
         while (fortsæt) {
@@ -48,11 +56,14 @@ public class UI {
             }
         }
     }
-    public static void printMenu (Menu menu){
+    public void printMenu (){
         System.out.println(menu);
+        System.out.println("enter for exit");
+        scanner.nextLine();
+        mainMenu();
     }
 
-    public static void tilføjOrdre(Menu menu, GemteOrdrer gemteOrdrer) {
+    public void tilføjOrdre() {
         boolean flere = true;
         ArrayList<OrdreLinje> ordreLinjer = new ArrayList<>();
         while (flere) {
@@ -99,6 +110,8 @@ public class UI {
         Ordre ordre = new Ordre(afhentningstidspunkt, ordreLinjer, "oprettet", menu);
         System.out.println(String.format("Du har bestilt: \n %s", ordre));
         gemteOrdrer.tilføjOrdre(ordre);
-        mainMenu(menu, gemteOrdrer);
+        System.out.println("enter for exit");
+        scanner.nextLine();
+        mainMenu();
     }
 }
