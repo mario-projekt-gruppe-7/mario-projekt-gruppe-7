@@ -13,7 +13,56 @@ public class UI {
         gemteOrdrer = new GemteOrdrer();
     }
 
-    void mainMenu() {
+
+    private String inputString (String brugerInstruks) {
+        System.out.println(brugerInstruks);
+        return scanner.nextLine();
+    }
+
+    private boolean inputBoolean(String brugerInstruks) {
+        System.out.println(brugerInstruks);
+        while (true) {
+            String svar = scanner.nextLine();
+            switch (svar) {
+                case "ja", "j" -> {
+                    return true;
+                }
+                case "nej", "n" -> {
+                    return false;
+                }
+                default -> System.out.println("skriv ja eller nej");
+            }
+        }
+    }
+
+    private int inputInt (String brugerInstruks) {
+        System.out.println(brugerInstruks);
+        while (true) {
+            if (scanner.hasNext()) {
+                int returnValue = scanner.nextInt();
+                scanner.nextLine();
+                return returnValue;
+            }
+            scanner.nextLine();
+            System.out.println("Skriv et heltal");
+        }
+    }
+
+    private double inputDouble(String brugerInstruks) {
+        System.out.println(brugerInstruks);
+        while (true) {
+            if (scanner.hasNext()) {
+                double returnValue = scanner.nextDouble();
+                scanner.nextLine();
+                return returnValue;
+            }
+            scanner.nextLine();
+            System.out.println("Skriv et tal");
+        }
+
+    }
+
+    public void mainMenu() {
         boolean fortsæt = true;
         boolean showMenu = true;
         while (fortsæt) {
@@ -61,10 +110,6 @@ public class UI {
     public void printMenu() {
         System.out.println(menu);
         System.out.println("enter for exit");
-
-
-
-
         System.out.println("1 hvis du vil ændre pris");
 
         int beslutningsNummer;
@@ -84,26 +129,12 @@ public class UI {
         scanner.nextLine();
     }
 
+
     public void redigerMenu() {
 
-        System.out.println("skriv det nummer du gerne vil redigere prisen på");
-        int nummer;
-        double pris;
+        int nummer = inputInt("skriv det nummer du gerne vil redigere prisen på");
+        double pris = inputDouble("Skriv prisen");
 
-        while (true) {
-            if (scanner.hasNext()) {
-                nummer = scanner.nextInt();
-                scanner.nextLine();
-                break;
-            }
-        }
-        while (true) {
-            if (scanner.hasNext()) {
-                pris = scanner.nextDouble();
-                scanner.nextLine();
-                break;
-            }
-        }
         menu.setPris(nummer, pris);
         for (MenuLinje menuLinje: menu.getMenuLinjer()) {
             if (menuLinje.getNr() == nummer) {
@@ -117,62 +148,15 @@ public class UI {
         boolean flere = true;
         Ordre ordre = new Ordre();
         while (flere) {
-            int nummer;
-            int antal;
-            System.out.println("skriv nummeret på pizzaen du vil have: ");
-            while (true) {
-                if (scanner.hasNextInt()) {
-                    nummer = scanner.nextInt();
-                    scanner.nextLine();
-                    break;
-                }
-                scanner.nextLine();
-                System.out.println("skriv et heltal");
-            }
-            System.out.println("skriv antallet af pizzaer du vil have: ");
-            while (true) {
-                if (scanner.hasNextInt()) {
-                    antal = scanner.nextInt();
-                    scanner.nextLine();
-                    break;
-                }
-                scanner.nextLine();
-                System.out.println("skriv et heltal");
-            }
-
-            System.out.println("Vil du have flere pizzaer? Skriv ja for at bekræfte");
+            int nummer = inputInt("skriv nummeret på pizzaen du vil have:");
+            int antal = inputInt("skriv antallet af pizzaer du vil have: ");
             ordre.addOrder(new OrdreLinje(antal, menu.getMenuLinjer().get(nummer)));
-            flere = (scanner.nextLine().equals("ja"));
+            flere = inputBoolean("Vil du have flere pizzaer? Skriv ja for at bekræfte");
         }
 
-        System.out.println("Om hvor mange minutter vil du hente pizzaen?");
-        while (true) {
-            if (scanner.hasNextInt()) {
-                ordre.setAfhentningTidspunkt(scanner.nextInt());
-                scanner.nextLine();
-                break;
-            }
-            scanner.nextLine();
-            System.out.println("skriv et kommatal");
-        }
-
-        System.out.println("Er ordren betalt? (j/n)");
-        boolean gyldigtSvar = false;
-        while (!gyldigtSvar) {
-            String svar = scanner.nextLine();
-            switch (svar) {
-                case "n" -> {
-                    ordre.betal();
-                    System.out.println("ordren er betalt");
-                    gyldigtSvar = true;
-                }
-                case "j" -> {
-                    System.out.println("ordre ikke betalt");
-                    gyldigtSvar = true;
-                }
-                default ->   System.out.println("Skriv j eller n:");
-            }
-        }
+        ordre.setAfhentningTidspunkt(inputDouble("Om hvor mange minutter vil du hente pizzaen?"));
+        boolean betalt = inputBoolean("Er ordren betalt? (j/n)");
+        if (betalt) ordre.betal();
         System.out.println(String.format("Du har bestilt: \n %s", ordre + "\nOrdren kan hentes om: " + ordre.getAfhentningTidspunkt() + "min\n"));
         gemteOrdrer.tilføjOrdre(ordre);
         System.out.println("enter for exit");
