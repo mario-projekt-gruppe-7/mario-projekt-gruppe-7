@@ -10,7 +10,7 @@ public class UI {
     public UI(Menu menu) {
         scanner = new Scanner(System.in);
         this.menu = menu;
-        gemteOrdrer = new GemteOrdrer(menu);
+        gemteOrdrer = new GemteOrdrer();
     }
 
     void mainMenu() {
@@ -181,7 +181,7 @@ public class UI {
             System.out.println("ordre ikke betalt");
         }
 
-        Ordre ordre = new Ordre(afhentningstidspunkt, ordreLinjer, "oprettet", menu);
+        Ordre ordre = new Ordre(afhentningstidspunkt, ordreLinjer, "oprettet");
         System.out.println(String.format("Du har bestilt: \n %s", ordre + "\nOrdren kan hentes om: " + afhentningstidspunkt + "min\n"));
         gemteOrdrer.tilføjOrdre(ordre);
         System.out.println("enter for exit");
@@ -189,7 +189,7 @@ public class UI {
     }
 
     public void printOrdreLinjer() {
-        System.out.println(gemteOrdrer.toString(menu));
+        System.out.println(gemteOrdrer.toString());
         System.out.println("enter for exit");
         scanner.nextLine();
 

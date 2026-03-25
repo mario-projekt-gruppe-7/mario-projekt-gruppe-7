@@ -4,9 +4,8 @@ public class Ordre {
     private ArrayList<OrdreLinje> ordreLinjer;
     private double afhentningTidspunkt;
     private String ordreStatus;
-    private Menu menu;
 
-    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus, Menu menu) {
+    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus) {
         afhentningTidspunkt = afhentningTidspunkt;
         this.ordreLinjer = ordreLinjer;
         this.ordreStatus = ordreStatus;

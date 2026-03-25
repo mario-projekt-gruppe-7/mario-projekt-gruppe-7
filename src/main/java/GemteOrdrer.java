@@ -2,15 +2,8 @@ import java.util.ArrayList;
 
 public class GemteOrdrer {
     private ArrayList<Ordre> ordreListe;
-    private Menu menu;
 
-    public GemteOrdrer(ArrayList<Ordre> ordreListe, Menu menu) {
-        this.ordreListe = ordreListe;
-        this.menu = menu;
-    }
-
-    public GemteOrdrer(Menu menu) {
-        this.menu = menu;
+    public GemteOrdrer() {
         this.ordreListe = new ArrayList<>();
     }
 
@@ -33,7 +26,7 @@ public class GemteOrdrer {
 
     }
 
-    public String toString (Menu menu){
+    public String toString (){
         String string = "";
         for (Ordre ordre : ordreListe){
             string += ordre.toString() +"\n";

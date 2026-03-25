@@ -19,7 +19,7 @@ class OrdreTest {
         ArrayList<OrdreLinje> liste = new ArrayList<>();
         liste.add(ordrelinje);
         liste.add(ordrelinje2);
-        ordre = new Ordre(10,liste,"", menu);
+        ordre = new Ordre(10,liste,"");
         menu = new Menu();
         menu.bygStandardMenu();
     }
