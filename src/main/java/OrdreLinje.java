@@ -18,7 +18,7 @@ public class OrdreLinje {
     public double getPris() {
         return menuLinje.getPris() * antal;
     }
-    public String toString(Menu menu) {
+    public String toString() {
         return String.format("%s x %s ... %s kr", antal, menuLinje.getNr(), getPris());
     }
 }

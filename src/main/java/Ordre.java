@@ -4,11 +4,35 @@ public class Ordre {
     private ArrayList<OrdreLinje> ordreLinjer;
     private double afhentningTidspunkt;
     private String ordreStatus;
+    private boolean betalt;
 
     public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus) {
         afhentningTidspunkt = afhentningTidspunkt;
         this.ordreLinjer = ordreLinjer;
         this.ordreStatus = ordreStatus;
+    }
+    public Ordre() {
+        afhentningTidspunkt = 0;
+        this.ordreLinjer = new ArrayList<>();
+        this.ordreStatus = "tilberedes";
+        this.betalt = false;
+    }
+
+    public void setAfhentningTidspunkt(double afhentningTidspunkt) {
+        this.afhentningTidspunkt = afhentningTidspunkt;
+    }
+
+    public void betal(){
+        betalt = true;
+    }
+
+    public void addOrder(OrdreLinje ordreLinje){
+        ordreLinjer.add(ordreLinje);
+    }
+
+    public void udskydTilFremtiden(double minutter){
+        afhentningTidspunkt = minutter;
+        ordreStatus = "venter";
     }
 
     public double getAfhentningTidspunkt() {
