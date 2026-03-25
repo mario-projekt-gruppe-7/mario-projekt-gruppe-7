@@ -72,28 +72,19 @@ public class UI {
                         "Skriv 1 for opret en ordre\n" +
                         "Skriv 2 for at printe menu\n" +
                         "Skriv 3 for at printe alle ordrer\n" +
+                        "Skriv 4 for at se hele omsætning\n" +
                         "Skriv 5 for at printe top solgte pizzaer\n");
-                        "skriv 4 for at se hele omsætning\n");
+
             }
 
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
 
                 switch (choice) {
-                    case 5 -> {
+                    case 0 -> fortsæt = false; //quit
+                    case 1 -> {
                         scanner.nextLine();
-                        printTopPizzaer();
-                        showMenu = true;
-                    }
-                    case 4 -> {
-                        scanner.nextLine();
-                        printOmsætning();
-                        showMenu = true;
-                    }
-
-                    case 3 -> {
-                        scanner.nextLine();
-                        printOrdreLinjer();
+                        tilføjOrdre();
                         showMenu = true;
                     }
                     case 2 -> {
@@ -101,12 +92,21 @@ public class UI {
                         printMenu();
                         showMenu = true;
                     }
-                    case 1 -> {
+                    case 3 -> {
                         scanner.nextLine();
-                        tilføjOrdre();
+                        printOrdreLinjer();
                         showMenu = true;
                     }
-                    case 0 -> fortsæt = false; //quit
+                    case 4 -> {
+                        scanner.nextLine();
+                        printOmsætning();
+                        showMenu = true;
+                    }
+                    case 5 -> {
+                        scanner.nextLine();
+                        printTopPizzaer();
+                        showMenu = true;
+                    }
                     default -> {
                         scanner.nextLine();
                         System.out.println("Kom igen, skriv et gyldigt tal fra listen");
