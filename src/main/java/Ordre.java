@@ -73,4 +73,13 @@ public class Ordre {
         string += "I alt: " + Double.toString(getTotal()) + "kr\n";
         return string;
     }
+
+    public boolean isBetalt() {
+        return betalt;
+
+    }
+
+    public void setBetalt(boolean betalt) {
+        this.betalt = betalt;
+    }
 }
