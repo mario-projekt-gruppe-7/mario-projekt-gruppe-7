@@ -72,21 +72,19 @@ public class UI {
                         "Skriv 1 for opret en ordre\n" +
                         "Skriv 2 for at printe menu\n" +
                         "Skriv 3 for at printe alle ordrer\n" +
-                        "skriv 4 for at se hele omsætning\n");
+                        "Skriv 4 for at se hele omsætning\n" +
+                        "Skriv 5 for at printe top solgte pizzaer\n");
+
             }
+
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
 
                 switch (choice) {
-                    case 4 -> {
+                    case 0 -> fortsæt = false; //quit
+                    case 1 -> {
                         scanner.nextLine();
-                        printOmsætning();
-                        showMenu = true;
-                    }
-
-                    case 3 -> {
-                        scanner.nextLine();
-                        printOrdreLinjer();
+                        tilføjOrdre();
                         showMenu = true;
                     }
                     case 2 -> {
@@ -94,12 +92,21 @@ public class UI {
                         printMenu();
                         showMenu = true;
                     }
-                    case 1 -> {
+                    case 3 -> {
                         scanner.nextLine();
-                        tilføjOrdre();
+                        printOrdreLinjer();
                         showMenu = true;
                     }
-                    case 0 -> fortsæt = false; //quit
+                    case 4 -> {
+                        scanner.nextLine();
+                        printOmsætning();
+                        showMenu = true;
+                    }
+                    case 5 -> {
+                        scanner.nextLine();
+                        printTopPizzaer();
+                        showMenu = true;
+                    }
                     default -> {
                         scanner.nextLine();
                         System.out.println("Kom igen, skriv et gyldigt tal fra listen");
@@ -176,6 +183,13 @@ public class UI {
 
     public void printOrdreLinjer() {
         System.out.println(gemteOrdrer.toString());
+        System.out.println("enter for exit");
+        scanner.nextLine();
+    }
+
+    public  void printTopPizzaer() {
+        int antal = 3;
+        System.out.println(menu.topSolgtePizzaer(antal));
         System.out.println("enter for exit");
         scanner.nextLine();
     }

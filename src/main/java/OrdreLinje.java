@@ -46,6 +46,11 @@ public class OrdreLinje {
         this.menuLinje = menuLinje;
     }
 
+    public void sælg() {
+        menuLinje.sælg(antal);
+    }
+
+
     public int getAntal() {
         return antal;
     }

@@ -23,7 +23,13 @@ public class Ordre {
     }
 
     public void betal(){
-        betalt = true;
+        if (!betalt) {
+            for (OrdreLinje ordreLinje : ordreLinjer) {
+                ordreLinje.sælg();
+            }
+            betalt = true;
+        }
+        System.out.println("fejl, du har allerede betalt!");
     }
 
     public void addOrder(OrdreLinje ordreLinje){

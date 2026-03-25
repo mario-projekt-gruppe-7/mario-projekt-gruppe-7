@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Menu {
     private ArrayList<MenuLinje> pizzaer;
@@ -41,6 +42,21 @@ public class Menu {
             menuStreng += menuLinje + "\n";
         }
         return menuStreng;
+    }
+
+    public String topSolgtePizzaer(int pizzaerAtVise) {
+        Menu sortedMenu = new Menu();
+        for (MenuLinje menuLinje: pizzaer) {
+            sortedMenu.tilføjMenuLinje(menuLinje);
+        }
+        sortedMenu.pizzaer.sort((a, b) -> a.getSolgte()- b.getSolgte());
+
+        String string = String.format("De %s mest solgte pizzaer er:\n", pizzaerAtVise);
+        List<MenuLinje> topLinjer = sortedMenu.getMenuLinjer().subList( 0, pizzaerAtVise);
+        for (MenuLinje menuLinje: topLinjer) {
+            string += String.format("%s (%s solgte)\n", menuLinje.getPizza().getNavn(),  menuLinje.getSolgte());
+        }
+        return string;
     }
 
     public void setPris(int nummer, double pris) {
