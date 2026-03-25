@@ -71,12 +71,19 @@ public class UI {
                         "Skriv 0 for exit.\n" +
                         "Skriv 1 for opret en ordre\n" +
                         "Skriv 2 for at printe menu\n" +
-                        "Skriv 3 for at printe alle ordrer\n");
+                        "Skriv 3 for at printe alle ordrer\n" +
+                        "skriv 4 for at se hele omsætning\n");
             }
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
 
                 switch (choice) {
+                    case 4 -> {
+                        scanner.nextLine();
+                        printOmsætning();
+                        showMenu = true;
+                    }
+
                     case 3 -> {
                         scanner.nextLine();
                         printOrdreLinjer();
@@ -105,6 +112,10 @@ public class UI {
                 showMenu = false;
             }
         }
+    }
+
+    private void printOmsætning() {
+        System.out.println("hele omsætning: " + gemteOrdrer.omsætning() +" kr");
     }
 
     public void printMenu() {
