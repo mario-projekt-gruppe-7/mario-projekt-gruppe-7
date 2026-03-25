@@ -1,25 +1,29 @@
+import java.time.*;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 
 public class Ordre {
+    private Clock clock;
     private ArrayList<OrdreLinje> ordreLinjer;
-    private double afhentningTidspunkt;
+    private LocalDateTime afhentningTidspunkt;
     private String ordreStatus;
     private boolean betalt;
 
-    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus) {
-        afhentningTidspunkt = afhentningTidspunkt;
+    public Ordre(Duration afhentningsTidsMængde, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus) {
+        this.afhentningTidspunkt = LocalDateTime.now().plus(afhentningsTidsMængde);
         this.ordreLinjer = ordreLinjer;
         this.ordreStatus = ordreStatus;
     }
     public Ordre() {
-        afhentningTidspunkt = 0;
+        afhentningTidspunkt = LocalDateTime.now();
         this.ordreLinjer = new ArrayList<>();
         this.ordreStatus = "tilberedes";
         this.betalt = false;
     }
 
-    public void setAfhentningTidspunkt(double afhentningTidspunkt) {
-        this.afhentningTidspunkt = afhentningTidspunkt;
+    public void setAfhentningTidspunkt(Duration afhentningsTidsMængde) {
+        this.afhentningTidspunkt = LocalDateTime.now().plus(afhentningsTidsMængde);
     }
 
     public void betal(){
@@ -36,12 +40,12 @@ public class Ordre {
         ordreLinjer.add(ordreLinje);
     }
 
-    public void udskydTilFremtiden(double minutter){
-        afhentningTidspunkt = minutter;
+    public void udskydTilFremtiden(Duration afhentningsTidsMængde){
+        afhentningTidspunkt = LocalDateTime.now().plus(afhentningsTidsMængde);
         ordreStatus = "venter";
     }
 
-    public double getAfhentningTidspunkt() {
+    public LocalDateTime getAfhentningTidspunkt() {
         return afhentningTidspunkt;
     }
 
