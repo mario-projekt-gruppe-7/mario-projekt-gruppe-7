@@ -14,12 +14,12 @@ class OrdreTest {
 
     @BeforeEach
     void setUp() {
-        OrdreLinje ordrelinje = new OrdreLinje(3, 6);
-        OrdreLinje ordrelinje2 = new OrdreLinje(4, 9);
+        OrdreLinje ordrelinje = new OrdreLinje(3, menu.getMenuLinjer().get(1));
+        OrdreLinje ordrelinje2 = new OrdreLinje(4, menu.getMenuLinjer().get(1));
         ArrayList<OrdreLinje> liste = new ArrayList<>();
         liste.add(ordrelinje);
         liste.add(ordrelinje2);
-        ordre = new Ordre(10,liste,"", menu);
+        ordre = new Ordre(10,liste,"");
         menu = new Menu();
         menu.bygStandardMenu();
     }
@@ -63,7 +63,7 @@ class OrdreTest {
         double expected = 3* menu.getMenuLinjer().get(6).getPris() + 4 * menu.getMenuLinjer().get(9).getPris();
 
         //act
-        double actual = ordre.getTotal(menu);
+        double actual = ordre.getTotal();
 
         //assert
         Assert.assertEquals(expected, actual, 0.0001);

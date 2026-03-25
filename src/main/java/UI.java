@@ -10,7 +10,7 @@ public class UI {
     public UI(Menu menu) {
         scanner = new Scanner(System.in);
         this.menu = menu;
-        gemteOrdrer = new GemteOrdrer(menu);
+        gemteOrdrer = new GemteOrdrer();
     }
 
     void mainMenu() {
@@ -113,10 +113,9 @@ public class UI {
 
     }
 
-
     public void tilføjOrdre() {
         boolean flere = true;
-        ArrayList<OrdreLinje> ordreLinjer = new ArrayList<>();
+        Ordre ordre = new Ordre();
         while (flere) {
             int nummer;
             int antal;
@@ -142,15 +141,14 @@ public class UI {
             }
 
             System.out.println("Vil du have flere pizzaer? Skriv ja for at bekræfte");
-            ordreLinjer.add(new OrdreLinje(antal, nummer));
+            ordre.addOrder(new OrdreLinje(antal, menu.getMenuLinjer().get(nummer)));
             flere = (scanner.nextLine().equals("ja"));
         }
 
         System.out.println("Om hvor mange minutter vil du hente pizzaen?");
-        double afhentningstidspunkt;
         while (true) {
             if (scanner.hasNextInt()) {
-                afhentningstidspunkt = scanner.nextInt();
+                ordre.setAfhentningTidspunkt(scanner.nextInt());
                 scanner.nextLine();
                 break;
             }
@@ -159,41 +157,32 @@ public class UI {
         }
 
         System.out.println("Er ordren betalt? (j/n)");
-
-        boolean erBetalt;
-
-        while (true) {
+        boolean gyldigtSvar = false;
+        while (!gyldigtSvar) {
             String svar = scanner.nextLine();
-
-            if (svar.equalsIgnoreCase("j")) {
-                erBetalt = true;
-                break;
-            } else if (svar.equalsIgnoreCase("n")) {
-                erBetalt = false;
-                break;
-            } else {
-                System.out.println("Skriv j eller n:");
+            switch (svar) {
+                case "n" -> {
+                    ordre.betal();
+                    System.out.println("ordren er betalt");
+                    gyldigtSvar = true;
+                }
+                case "j" -> {
+                    System.out.println("ordre ikke betalt");
+                    gyldigtSvar = true;
+                }
+                default ->   System.out.println("Skriv j eller n:");
             }
         }
-        if (erBetalt) {
-            System.out.println("ordren er betalt"); }
-        else {
-            System.out.println("ordre ikke betalt");
-        }
-
-        Ordre ordre = new Ordre(afhentningstidspunkt, ordreLinjer, "oprettet", menu);
-        System.out.println(String.format("Du har bestilt: \n %s", ordre + "\nOrdren kan hentes om: " + afhentningstidspunkt + "min\n"));
+        System.out.println(String.format("Du har bestilt: \n %s", ordre + "\nOrdren kan hentes om: " + ordre.getAfhentningTidspunkt() + "min\n"));
         gemteOrdrer.tilføjOrdre(ordre);
         System.out.println("enter for exit");
         scanner.nextLine();
     }
 
     public void printOrdreLinjer() {
-        System.out.println(gemteOrdrer.toString(menu));
+        System.out.println(gemteOrdrer.toString());
         System.out.println("enter for exit");
         scanner.nextLine();
-
-
     }
 
 }

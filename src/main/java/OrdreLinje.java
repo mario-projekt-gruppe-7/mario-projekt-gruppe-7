@@ -1,24 +1,24 @@
 public class OrdreLinje {
     private int antal;
-    private int pizzaNr;
+    private MenuLinje menuLinje;
 
-    public OrdreLinje(int antal, int pizzaNr) {
+    public OrdreLinje(int antal, MenuLinje menuLinje) {
         this.antal = antal;
-        this.pizzaNr = pizzaNr;
+        this.menuLinje = menuLinje;
     }
 
     public int getAntal() {
         return antal;
     }
 
-    public int getPizzaNr() {
-        return pizzaNr;
+    public MenuLinje getMenuLinje() {
+        return menuLinje;
     }
 
-    public double getPris( Menu menu) {
-        return menu.getMenuLinjer().get(pizzaNr-1).getPris() * antal;
+    public double getPris() {
+        return menuLinje.getPris() * antal;
     }
-    public String toString(Menu menu) {
-        return String.format("%s x %s ... %s kr", antal, pizzaNr, getPris(menu));
+    public String toString() {
+        return String.format("%s x %s ... %s kr", antal, menuLinje.getNr(), getPris());
     }
 }

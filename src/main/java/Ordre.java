@@ -4,13 +4,35 @@ public class Ordre {
     private ArrayList<OrdreLinje> ordreLinjer;
     private double afhentningTidspunkt;
     private String ordreStatus;
-    private Menu menu;
+    private boolean betalt;
 
-    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus, Menu menu) {
+    public Ordre(double afhentningTidspunkt, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus) {
         afhentningTidspunkt = afhentningTidspunkt;
         this.ordreLinjer = ordreLinjer;
         this.ordreStatus = ordreStatus;
-        this.menu = menu;
+    }
+    public Ordre() {
+        afhentningTidspunkt = 0;
+        this.ordreLinjer = new ArrayList<>();
+        this.ordreStatus = "tilberedes";
+        this.betalt = false;
+    }
+
+    public void setAfhentningTidspunkt(double afhentningTidspunkt) {
+        this.afhentningTidspunkt = afhentningTidspunkt;
+    }
+
+    public void betal(){
+        betalt = true;
+    }
+
+    public void addOrder(OrdreLinje ordreLinje){
+        ordreLinjer.add(ordreLinje);
+    }
+
+    public void udskydTilFremtiden(double minutter){
+        afhentningTidspunkt = minutter;
+        ordreStatus = "venter";
     }
 
     public double getAfhentningTidspunkt() {
@@ -35,10 +57,10 @@ public class Ordre {
         return ordreStatus;
     }
 
-    public double getTotal(Menu menu) {
+    public double getTotal() {
         double total = 0;
         for (OrdreLinje ordreLinje : ordreLinjer) {
-            total += ordreLinje.getPris(menu);
+            total += ordreLinje.getPris();
         }
         return total;
     }
@@ -46,9 +68,9 @@ public class Ordre {
     public String toString() {
         String string = "";
         for (OrdreLinje ordrelinje : ordreLinjer) {
-            string += ordrelinje.toString(menu) + "\n";
+            string += ordrelinje.toString() + "\n";
         }
-        string += "I alt: " + Double.toString(getTotal(menu)) + "kr\n";
+        string += "I alt: " + Double.toString(getTotal()) + "kr\n";
         return string;
     }
 }
