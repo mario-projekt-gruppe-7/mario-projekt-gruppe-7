@@ -10,7 +10,6 @@ public class Ordre {
         afhentningTidspunkt = afhentningTidspunkt;
         this.ordreLinjer = ordreLinjer;
         this.ordreStatus = ordreStatus;
-        this.menu = menu;
     }
 
     public double getAfhentningTidspunkt() {
@@ -35,7 +34,7 @@ public class Ordre {
         return ordreStatus;
     }
 
-    public double getTotal(Menu menu) {
+    public double getTotal() {
         double total = 0;
         for (OrdreLinje ordreLinje : ordreLinjer) {
             total += ordreLinje.getPris();
@@ -46,9 +45,9 @@ public class Ordre {
     public String toString() {
         String string = "";
         for (OrdreLinje ordrelinje : ordreLinjer) {
-            string += ordrelinje.toString(menu) + "\n";
+            string += ordrelinje.toString() + "\n";
         }
-        string += "I alt: " + Double.toString(getTotal(menu)) + "kr\n";
+        string += "I alt: " + Double.toString(getTotal()) + "kr\n";
         return string;
     }
 }

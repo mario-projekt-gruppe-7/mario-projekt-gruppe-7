@@ -63,7 +63,7 @@ class OrdreTest {
         double expected = 3* menu.getMenuLinjer().get(6).getPris() + 4 * menu.getMenuLinjer().get(9).getPris();
 
         //act
-        double actual = ordre.getTotal(menu);
+        double actual = ordre.getTotal();
 
         //assert
         Assert.assertEquals(expected, actual, 0.0001);

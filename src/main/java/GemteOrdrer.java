@@ -22,7 +22,7 @@ public class GemteOrdrer {
         double omsætning = 0;
         for (Ordre ordre : ordreListe) {
             if (ordre.getOrdreStatus() == "betalt") {
-                omsætning += ordre.getTotal(menu);
+                omsætning += ordre.getTotal();
             }
         }
         return omsætning;
