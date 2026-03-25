@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -38,7 +39,7 @@ public class UI {
     private int inputInt (String brugerInstruks) {
         System.out.println(brugerInstruks);
         while (true) {
-            if (scanner.hasNext()) {
+            if (scanner.hasNextInt()) {
                 int returnValue = scanner.nextInt();
                 scanner.nextLine();
                 return returnValue;
@@ -51,7 +52,7 @@ public class UI {
     private double inputDouble(String brugerInstruks) {
         System.out.println(brugerInstruks);
         while (true) {
-            if (scanner.hasNext()) {
+            if (scanner.hasNextDouble()) {
                 double returnValue = scanner.nextDouble();
                 scanner.nextLine();
                 return returnValue;
@@ -60,6 +61,19 @@ public class UI {
             System.out.println("Skriv et tal");
         }
 
+    }
+
+    private Duration inputMinutter(String brugerInstruks) {
+        System.out.println(brugerInstruks);
+        while (true) {
+            if (scanner.hasNext()) {
+                Duration returnValue = Duration.ofMinutes(scanner.nextInt());
+                scanner.nextLine();
+                return returnValue;
+            }
+            scanner.nextLine();
+            System.out.println("Skriv et tal");
+        }
     }
 
     public void mainMenu() {
@@ -172,10 +186,10 @@ public class UI {
             flere = inputBoolean("Vil du have flere pizzaer? Skriv ja for at bekræfte");
         }
 
-        ordre.setAfhentningTidspunkt(inputDouble("Om hvor mange minutter vil du hente pizzaen?"));
+        ordre.setAfhentningTidspunkt(inputMinutter("Om hvor mange minutter vil du hente pizzaen?"));
         boolean betalt = inputBoolean("Er ordren betalt? (j/n)");
         if (betalt) ordre.betal();
-        System.out.println(String.format("Du har bestilt: \n %s", ordre + "\nOrdren kan hentes om: " + ordre.getAfhentningTidspunkt() + "min\n"));
+        System.out.println(String.format("Du har bestilt: \n %s", ordre + "\nOrdren kan hentes: " + ordre.getAfhentningTidspunkt() + "\n"));
         gemteOrdrer.tilføjOrdre(ordre);
         System.out.println("enter for exit");
         scanner.nextLine();

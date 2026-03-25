@@ -2,8 +2,9 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
-
+import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrdreTest {
@@ -19,7 +20,7 @@ class OrdreTest {
         ArrayList<OrdreLinje> liste = new ArrayList<>();
         liste.add(ordrelinje);
         liste.add(ordrelinje2);
-        ordre = new Ordre(10,liste,"");
+        ordre = new Ordre( Duration.ofMinutes(0), liste, "");
         menu = new Menu();
         menu.bygStandardMenu();
     }
