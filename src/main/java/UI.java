@@ -71,12 +71,19 @@ public class UI {
                         "Skriv 0 for exit.\n" +
                         "Skriv 1 for opret en ordre\n" +
                         "Skriv 2 for at printe menu\n" +
-                        "Skriv 3 for at printe alle ordrer\n");
+                        "Skriv 3 for at printe alle ordrer\n" +
+                        "Skriv 5 for at printe top solgte pizzaer\n");
             }
+
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
 
                 switch (choice) {
+                    case 5 -> {
+                        scanner.nextLine();
+                        printTopPizzaer();
+                        showMenu = true;
+                    }
                     case 3 -> {
                         scanner.nextLine();
                         printOrdreLinjer();
@@ -165,6 +172,13 @@ public class UI {
 
     public void printOrdreLinjer() {
         System.out.println(gemteOrdrer.toString());
+        System.out.println("enter for exit");
+        scanner.nextLine();
+    }
+
+    public  void printTopPizzaer() {
+        int antal = 3;
+        System.out.println(menu.topSolgtePizzaer(antal));
         System.out.println("enter for exit");
         scanner.nextLine();
     }
