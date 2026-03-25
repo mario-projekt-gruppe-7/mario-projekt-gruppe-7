@@ -142,7 +142,7 @@ public class UI {
             }
 
             System.out.println("Vil du have flere pizzaer? Skriv ja for at bekræfte");
-            ordreLinjer.add(new OrdreLinje(antal, nummer));
+            ordreLinjer.add(new OrdreLinje(antal, menu.getMenuLinjer().get(nummer)));
             flere = (scanner.nextLine().equals("ja"));
         }
 

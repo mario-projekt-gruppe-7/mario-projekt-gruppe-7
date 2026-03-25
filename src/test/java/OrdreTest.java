@@ -14,8 +14,8 @@ class OrdreTest {
 
     @BeforeEach
     void setUp() {
-        OrdreLinje ordrelinje = new OrdreLinje(3, 6);
-        OrdreLinje ordrelinje2 = new OrdreLinje(4, 9);
+        OrdreLinje ordrelinje = new OrdreLinje(3, menu.getMenuLinjer().get(1));
+        OrdreLinje ordrelinje2 = new OrdreLinje(4, menu.getMenuLinjer().get(1));
         ArrayList<OrdreLinje> liste = new ArrayList<>();
         liste.add(ordrelinje);
         liste.add(ordrelinje2);

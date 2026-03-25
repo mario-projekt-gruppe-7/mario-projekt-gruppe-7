@@ -38,7 +38,7 @@ public class Ordre {
     public double getTotal(Menu menu) {
         double total = 0;
         for (OrdreLinje ordreLinje : ordreLinjer) {
-            total += ordreLinje.getPris(menu);
+            total += ordreLinje.getPris();
         }
         return total;
     }

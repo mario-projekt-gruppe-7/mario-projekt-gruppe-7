@@ -1,14 +1,23 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 class OrdreLinjeTest {
 
+    private Menu menu;
+
+    @BeforeEach
+    void setUp() {
+        menu = new Menu();
+        menu.bygStandardMenu();
+    }
+
     @Test
     void getAntal() {
         //Arrange
         int expected = 3;
-        OrdreLinje ordreLinje = new OrdreLinje(expected, 2);
+        OrdreLinje ordreLinje = new OrdreLinje(expected, menu.getMenuLinjer().get(1));
         //Act
         int actual = ordreLinje.getAntal();
         //Assert
@@ -16,12 +25,12 @@ class OrdreLinjeTest {
     }
 
     @Test
-    void getPizzaNr() {
+    void getMenuLinje() {
         //Arrange
-        int expected = 3;
-        OrdreLinje ordreLinje = new OrdreLinje(2, expected);
+        OrdreLinje ordreLinje = new OrdreLinje(2, menu.getMenuLinjer().get(1));
+        MenuLinje expected = menu.getMenuLinjer().get(1);
         //Act
-        int actual = ordreLinje.getPizzaNr();
+        MenuLinje actual = ordreLinje.getMenuLinje();
         //Assert
         Assertions.assertEquals(expected, actual);
     }
@@ -34,9 +43,9 @@ class OrdreLinjeTest {
         int nr = 2;
         int antal = 3;
         double expected = menu.getMenuLinjer().get(nr).getPris() * antal;
-        OrdreLinje ordreLinje = new OrdreLinje(3, nr);
+        OrdreLinje ordreLinje = new OrdreLinje(3, menu.getMenuLinjer().get(1));
         // act
-        double actual = ordreLinje.getPris(menu);
+        double actual = ordreLinje.getPris();
         //assert
         Assertions.assertEquals(expected, actual, 0.00001);
     }
