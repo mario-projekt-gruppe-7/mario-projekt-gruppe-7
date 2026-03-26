@@ -110,8 +110,10 @@ public class Controller {
     }
 
     private void færdigOrdre() {
+        System.out.println(gemteOrdrer.toStringConcise());
         int ordreID = ui.inputInt("skriv ID på ordren du vil færdiggøre");
         gemteOrdrer.getOrdreListe().get(ordreID).færdigOrdre();
-            System.out.println("Ordren er færdig");
-        }
+        System.out.println("Ordren er færdig");
+        ui.enterForExit();
     }
+}
