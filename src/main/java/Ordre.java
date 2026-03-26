@@ -23,7 +23,7 @@ public class Ordre {
         this.clock = clock;
         afhentningTidspunkt = LocalDateTime.now(clock);
         this.ordreLinjer = new ArrayList<>();
-        this.ordreStatus = "tilberedes";
+        this.ordreStatus = "Færdig";
         this.betalt = false;
     }
 
@@ -96,5 +96,9 @@ public class Ordre {
 
     public void setBetalt(boolean betalt) {
         this.betalt = betalt;
+    }
+
+    public void færdigOrdre() {
+        this.ordreStatus = "færdig";
     }
 }

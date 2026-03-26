@@ -99,4 +99,4 @@ public class UI {
     public void fortsæt() {
         scanner.nextLine();
     }
-}
+    }

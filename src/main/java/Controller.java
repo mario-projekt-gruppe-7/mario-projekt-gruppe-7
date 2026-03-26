@@ -29,7 +29,9 @@ public class Controller {
                     "Skriv 2 for at printe menu\n" +
                     "Skriv 3 for at printe alle ordrer\n" +
                     "Skriv 4 for at se hele omsætning\n" +
-                    "Skriv 5 for at printe top solgte pizzaer\n", 0, 5);
+                    "Skriv 5 for at printe top solgte pizzaer\n" +
+                    "Skriv 6 for at færdiggøre en ordre\n", 0, 6);
+
 
             switch (choice) {
                 case 0 -> fortsæt = false; //quit
@@ -38,6 +40,7 @@ public class Controller {
                 case 3 -> printOrdreLinjer();
                 case 4 -> printOmsætning();
                 case 5 -> printTopPizzaer();
+                case 6 -> færdigOrdre();
             }
         }
     }
@@ -105,4 +108,10 @@ public class Controller {
         System.out.println(menu.topSolgtePizzaer(antal));
         ui.enterForExit();
     }
-}
+
+    private void færdigOrdre() {
+        int ordreID = ui.inputInt("skriv ID på ordren du vil færdiggøre");
+        gemteOrdrer.getOrdreListe().get(ordreID).færdigOrdre();
+            System.out.println("Ordren er færdig");
+        }
+    }
