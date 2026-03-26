@@ -18,7 +18,7 @@ public class Ordre {
     public Ordre() {
         afhentningTidspunkt = LocalDateTime.now();
         this.ordreLinjer = new ArrayList<>();
-        this.ordreStatus = "tilberedes";
+        this.ordreStatus = "Færdig";
         this.betalt = false;
     }
 
@@ -40,9 +40,9 @@ public class Ordre {
         ordreLinjer.add(ordreLinje);
     }
 
-    public void udskydTilFremtiden(Duration afhentningsTidsMængde){
+    public void færdigOrdre(Duration afhentningsTidsMængde){
         afhentningTidspunkt = LocalDateTime.now().plus(afhentningsTidsMængde);
-        ordreStatus = "venter";
+        ordreStatus = "færdig";
     }
 
     public LocalDateTime getAfhentningTidspunkt() {
@@ -91,5 +91,9 @@ public class Ordre {
 
     public void setBetalt(boolean betalt) {
         this.betalt = betalt;
+    }
+
+    public void færdigOrdre() {
+        this.ordreStatus = "færdig";
     }
 }
