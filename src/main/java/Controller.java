@@ -1,0 +1,103 @@
+// Det er Controller-laget i MVC (model view controller) arkitektur.
+
+public class Controller {
+    private UI ui;
+    private Menu menu;
+    private GemteOrdrer gemteOrdrer;
+
+    public Controller(Menu menu) {
+        ui = new UI();
+        this.menu = menu;
+        gemteOrdrer = new GemteOrdrer();
+    }
+
+    public void start() {
+        mainMenu();
+    }
+
+    private void mainMenu() {
+        boolean fortsæt = true;
+        while (fortsæt) {
+            int choice = ui.inputValgmuligheder("velkommen til Marios Pizza \uD83C\uDF55  \n" +
+                    "Skriv 0 for exit.\n" +
+                    "Skriv 1 for opret en ordre\n" +
+                    "Skriv 2 for at printe menu\n" +
+                    "Skriv 3 for at printe alle ordrer\n" +
+                    "Skriv 4 for at se hele omsætning\n" +
+                    "Skriv 5 for at printe top solgte pizzaer\n", 0, 5);
+
+            switch (choice) {
+                case 0 -> fortsæt = false; //quit
+                case 1 -> tilføjOrdre();
+                case 2 -> printMenu();
+                case 3 -> printOrdreLinjer();
+                case 4 -> printOmsætning();
+                case 5 -> printTopPizzaer();
+            }
+        }
+    }
+
+    private void printOmsætning() {
+        System.out.println("hele omsætning: " + gemteOrdrer.omsætning() + " kr");
+        ui.enterForExit();
+    }
+
+    private void printMenu() {
+        System.out.println(menu);
+
+        int beslutningsNummer = ui.inputValgmuligheder(
+                "0 for exit\n" +
+                        "1 hvis du vil ændre pris",
+                0,
+                1
+        );
+
+        switch (beslutningsNummer) {
+            case 0 -> ui.fortsæt();
+            case 1 -> redigerMenu();
+        }
+    }
+
+
+    private void redigerMenu() {
+
+        int nummer = ui.inputInt("skriv det nummer du gerne vil redigere prisen på");
+        double pris = ui.inputDouble("Skriv prisen");
+
+        menu.setPris(nummer, pris);
+        for (MenuLinje menuLinje : menu.getMenuLinjer()) {
+            if (menuLinje.getNr() == nummer) {
+                System.out.println("du har opdateret prisen på:" + menuLinje.getPizza().getNavn() + "\n" + menu.toString());
+            }
+        }
+    }
+
+    private void tilføjOrdre() {
+        boolean flere = true;
+        Ordre ordre = new Ordre();
+        while (flere) {
+            int nummer = ui.inputInt("skriv nummeret på pizzaen du vil have:");
+            int antal = ui.inputInt("skriv antallet af pizzaer du vil have: ");
+            ordre.addOrder(new OrdreLinje(antal, menu.getMenuLinjer().get(nummer)));
+            flere = ui.inputBoolean("Vil du have flere pizzaer? Skriv ja for at bekræfte");
+        }
+
+        ordre.setAfhentningTidspunkt(ui.inputMinutter("Om hvor mange minutter vil du hente pizzaen?"));
+        boolean betalt = ui.inputBoolean("Er ordren betalt? (j/n)");
+        if (betalt) ordre.betal();
+        System.out.println(String.format("Du har bestilt: \n %s", ordre + "\nOrdren kan hentes: " + ordre.getAfhentningTidspunkt() + "\n"));
+        gemteOrdrer.tilføjOrdre(ordre);
+        ui.enterForExit();
+    }
+
+    private void printOrdreLinjer() {
+        System.out.println(gemteOrdrer.toString());
+        ui.enterForExit();
+    }
+
+    private void printTopPizzaer() {
+        int antal = 3;
+        System.out.println(menu.topSolgtePizzaer(antal));
+        ui.enterForExit();
+    }
+}
