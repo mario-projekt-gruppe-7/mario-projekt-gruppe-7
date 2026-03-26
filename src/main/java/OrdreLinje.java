@@ -53,6 +53,7 @@ public class OrdreLinje {
         this.menuLinje = menuLinje;
     }
 
+    // metode virker ikke fordi vi mangler reference menuLinje i kopiering
     public void sælg() {
         menuLinje.sælg(antal);
     }
