@@ -7,12 +7,14 @@ public class Controller {
     private Menu menu;
     private GemteOrdrer gemteOrdrer;
     private Clock clock;
+    private FasteKunder fasteKunder;
 
     public Controller(Menu menu, Clock clock) {
         ui = new UI();
         this.menu = menu;
         this.clock = clock;
         gemteOrdrer = new GemteOrdrer();
+        this.fasteKunder = new FasteKunder();
 
     }
 
@@ -30,7 +32,8 @@ public class Controller {
                     "Skriv 3 for at printe alle ordrer\n" +
                     "Skriv 4 for at se hele omsætning\n" +
                     "Skriv 5 for at printe top solgte pizzaer\n" +
-                    "Skriv 6 for at færdiggøre en ordre\n", 0, 6);
+                    "Skriv 6 for at færdiggøre en ordre\n"+
+                    "Skriv 7 for at oprette en kunde", 0, 7);
 
 
             switch (choice) {
@@ -41,6 +44,7 @@ public class Controller {
                 case 4 -> printOmsætning();
                 case 5 -> printTopPizzaer();
                 case 6 -> færdigOrdre();
+                case 7 -> opretFastKunde();
             }
         }
     }
@@ -114,4 +118,14 @@ public class Controller {
         gemteOrdrer.getOrdreListe().get(ordreID).færdigOrdre();
             System.out.println("Ordren er færdig");
         }
+
+    private void opretFastKunde(){
+        int kundeID = ui.inputInt("Skriv et kundeID");
+        String fornavn = ui.inputString("Skriv fornavn på kunde");
+        String efternavn = ui.inputString("Skriv efternavn på kunde");
+        int telefonNr = ui.inputInt("Skriv telefon nummer på kunde");
+        fasteKunder.tilføjKunde(kundeID, fornavn, efternavn, telefonNr);
+        System.out.println("kunden er nu gemt :-)");
+        ui.enterForExit();
     }
+}
