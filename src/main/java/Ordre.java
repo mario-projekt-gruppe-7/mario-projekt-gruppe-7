@@ -33,7 +33,7 @@ public class Ordre {
             }
             betalt = true;
         }
-        System.out.println("fejl, du har allerede betalt!");
+        System.out.println("du har allerede betalt!");
     }
 
     public void addOrder(OrdreLinje ordreLinje){
