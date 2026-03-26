@@ -16,7 +16,9 @@ public class Controller {
 
     }
 
+
     public void start() {
+        AsciiPrinter.printColoredFile("src/main/assets/mario.txt");
         mainMenu();
     }
 
