@@ -87,7 +87,7 @@ public class UI {
             if (valg >= min && valg <= max) {
                 return valg;
             }
-            System.out.println(String.format("Ugyldigt valg (skal være mellem %d og %d)", min, max));
+            System.out.printf("Ugyldigt valg (skal være mellem %d og %d)%n", min, max);
         }
     }
 
