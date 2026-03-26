@@ -183,7 +183,7 @@ public class UI {
             int nummer = inputInt("skriv nummeret på pizzaen du vil have:");
             int antal = inputInt("skriv antallet af pizzaer du vil have: ");
             ordre.addOrder(new OrdreLinje(antal, menu.getMenuLinjer().get(nummer)));
-            flere = inputBoolean("Vil du have flere pizzaer? Skriv ja for at bekræfte");
+            flere = inputBoolean("Vil du have flere pizzaer? Skriv ja/nej");
         }
 
         ordre.setAfhentningTidspunkt(inputMinutter("Om hvor mange minutter vil du hente pizzaen?"));
