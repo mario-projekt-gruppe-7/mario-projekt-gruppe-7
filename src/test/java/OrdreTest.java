@@ -2,6 +2,9 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.time.Duration;
@@ -20,7 +23,8 @@ class OrdreTest {
         ArrayList<OrdreLinje> liste = new ArrayList<>();
         liste.add(ordrelinje);
         liste.add(ordrelinje2);
-        ordre = new Ordre( Duration.ofMinutes(0), liste, "");
+        Clock fakeClock = Clock.fixed(Instant.parse("2026-03-26T12:00:00Z"), ZoneId.of("UTC"));
+        ordre = new Ordre( Duration.ofMinutes(0), liste, "", fakeClock);
         menu = new Menu();
         menu.bygStandardMenu();
     }

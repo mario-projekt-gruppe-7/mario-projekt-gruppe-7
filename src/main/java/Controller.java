@@ -1,14 +1,19 @@
 // Det er Controller-laget i MVC (model view controller) arkitektur.
 
+import java.time.Clock;
+
 public class Controller {
     private UI ui;
     private Menu menu;
     private GemteOrdrer gemteOrdrer;
+    private Clock clock;
 
-    public Controller(Menu menu) {
+    public Controller(Menu menu, Clock clock) {
         ui = new UI();
         this.menu = menu;
+        this.clock = clock;
         gemteOrdrer = new GemteOrdrer();
+
     }
 
     public void start() {
@@ -77,7 +82,7 @@ public class Controller {
 
     private void tilføjOrdre() {
         boolean flere = true;
-        Ordre ordre = new Ordre();
+        Ordre ordre = new Ordre(clock);
         while (flere) {
             int nummer = ui.inputInt("skriv nummeret på pizzaen du vil have:");
             int antal = ui.inputInt("skriv antallet af pizzaer du vil have: ");

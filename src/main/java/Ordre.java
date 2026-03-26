@@ -4,26 +4,31 @@ import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 
 public class Ordre {
-    private Clock clock;
+    private Clock clock;  // bruges for at gøre det muligt at fake tidspunktet, så vi får en deterministisk kode vi kan teste.
     private ArrayList<OrdreLinje> ordreLinjer;
     private LocalDateTime afhentningTidspunkt;
     private String ordreStatus;
     private boolean betalt;
 
-    public Ordre(Duration afhentningsTidsMængde, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus) {
-        this.afhentningTidspunkt = LocalDateTime.now().plus(afhentningsTidsMængde);
+    // constructor anvendes kun til test:
+    public Ordre(Duration afhentningsTidsMængde, ArrayList<OrdreLinje> ordreLinjer, String ordreStatus, Clock clock) {
+        this.clock = clock;
+        this.afhentningTidspunkt = LocalDateTime.now(clock).plus(afhentningsTidsMængde);
         this.ordreLinjer = ordreLinjer;
         this.ordreStatus = ordreStatus;
+
     }
-    public Ordre() {
-        afhentningTidspunkt = LocalDateTime.now();
+
+    public Ordre(Clock clock) {
+        this.clock = clock;
+        afhentningTidspunkt = LocalDateTime.now(clock);
         this.ordreLinjer = new ArrayList<>();
         this.ordreStatus = "Færdig";
         this.betalt = false;
     }
 
     public void setAfhentningTidspunkt(Duration afhentningsTidsMængde) {
-        this.afhentningTidspunkt = LocalDateTime.now().plus(afhentningsTidsMængde);
+        this.afhentningTidspunkt = LocalDateTime.now(clock).plus(afhentningsTidsMængde);
     }
 
     public void betal(){
@@ -40,9 +45,9 @@ public class Ordre {
         ordreLinjer.add(ordreLinje);
     }
 
-    public void færdigOrdre(Duration afhentningsTidsMængde){
-        afhentningTidspunkt = LocalDateTime.now().plus(afhentningsTidsMængde);
-        ordreStatus = "færdig";
+    public void udskydTilFremtiden(Duration afhentningsTidsMængde){
+        afhentningTidspunkt = LocalDateTime.now(clock).plus(afhentningsTidsMængde);
+        ordreStatus = "venter";
     }
 
     public LocalDateTime getAfhentningTidspunkt() {
