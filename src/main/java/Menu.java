@@ -37,9 +37,9 @@ public class Menu {
 
     @Override
     public String toString (){
-        String menuStreng = "menu: \n";
+        String menuStreng = "-------Menu--------\n";
         for (MenuLinje menuLinje : pizzaer) {
-            menuStreng += menuLinje + "\n";
+            menuStreng += menuLinje + "\n\n";
         }
         return menuStreng;
     }

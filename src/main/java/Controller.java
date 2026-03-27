@@ -36,7 +36,7 @@ public class Controller {
                                     "[4] se hele omsætning\n" +
                                     "[5] print top solgte pizzaer\n" +
                                     "[6] færdiggør en ordre\n" + 
-                                    "[7] opret en kunde), 0, 7);
+                                    "[7] opret en kunde"), 0, 7);
 
 
             switch (choice) {

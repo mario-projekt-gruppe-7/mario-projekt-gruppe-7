@@ -56,4 +56,8 @@ public final class Styles {
     public static String error(String text) {
         return farve(text, Farve.RED);
     }
+
+    public static String detalje(String text) {
+        return  farve(text, Farve.GRAY);
+    }
 }
