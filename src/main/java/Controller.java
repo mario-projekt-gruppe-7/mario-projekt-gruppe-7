@@ -105,7 +105,7 @@ public class Controller {
         while (flere) {
             int nummer = ui.inputInt("skriv nummeret på pizzaen du vil have:");
             int antal = ui.inputInt("skriv antallet af pizzaer du vil have: ");
-            ordre.addOrder(new OrdreLinje(antal, menu.getMenuLinjer().get(nummer)));
+            ordre.addOrder(nummer, antal, menu);
             flere = ui.inputBoolean("Vil du have flere pizzaer? Skriv ja/nej");
         }
 
@@ -136,7 +136,7 @@ public class Controller {
     private void færdigOrdre() {
         System.out.println(gemteOrdrer.toStringConcise());
         int ordreID = ui.inputInt("skriv ID på ordren du vil færdiggøre");
-        gemteOrdrer.getOrdreListe().get(ordreID).færdigOrdre();
+        gemteOrdrer.færdigørOrdre(ordreID);
             System.out.println(Styles.success("Ordren er færdig"));
         }
 

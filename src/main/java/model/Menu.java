@@ -34,6 +34,9 @@ public class Menu {
     public ArrayList<MenuLinje> getMenuLinjer() {
         return pizzaer;
     }
+    public MenuLinje getMenuLinjeFraNummer(int nummer) {
+        return pizzaer.get(nummer);
+    }
 
     public void tilføjMenuLinje(MenuLinje menuLinje) {
         pizzaer.add(menuLinje);
@@ -54,7 +57,7 @@ public class Menu {
         for (MenuLinje menuLinje: pizzaer) {
             sortedMenu.tilføjMenuLinje(menuLinje);
         }
-        sortedMenu.pizzaer.sort((a, b) -> a.getSolgte()- b.getSolgte());
+        sortedMenu.pizzaer.sort((a, b) -> b.getSolgte() - a.getSolgte());
 
         String string = String.format("De %s mest solgte pizzaer er:\n", pizzaerAtVise);
         List<MenuLinje> topLinjer = sortedMenu.getMenuLinjer().subList( 0, pizzaerAtVise);

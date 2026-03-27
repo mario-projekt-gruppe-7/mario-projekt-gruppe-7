@@ -23,7 +23,7 @@ public class Ordre {
         this.clock = clock;
         afhentningTidspunkt = LocalDateTime.now(clock);
         this.ordreLinjer = new ArrayList<>();
-        this.ordreStatus = "Færdig";
+        this.ordreStatus = "Ikke lavet";
         this.betalt = false;
     }
 
@@ -41,8 +41,8 @@ public class Ordre {
         System.out.println("du har allerede betalt!");
     }
 
-    public void addOrder(OrdreLinje ordreLinje){
-        ordreLinjer.add(ordreLinje);
+    public void addOrder(int nummer, int antal, Menu menu){
+        ordreLinjer.add(new OrdreLinje(antal, menu.getMenuLinjeFraNummer(nummer)));
     }
 
     public void udskydTilFremtiden(Duration afhentningsTidsMængde){
@@ -54,7 +54,7 @@ public class Ordre {
         return afhentningTidspunkt;
     }
 
-    public ArrayList<OrdreLinje> getOrdre() {
+    public ArrayList<OrdreLinje> getOrdreLinjer() {
         return ordreLinjer;
     }
 

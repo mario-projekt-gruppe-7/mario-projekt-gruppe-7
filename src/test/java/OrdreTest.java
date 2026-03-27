@@ -19,15 +19,16 @@ class OrdreTest {
 
     @BeforeEach
     void setUp() {
+        menu = new Menu();
+        menu.bygStandardMenu();
+
         OrdreLinje ordrelinje = new OrdreLinje(3, menu.getMenuLinjer().get(1));
         OrdreLinje ordrelinje2 = new OrdreLinje(4, menu.getMenuLinjer().get(1));
         ArrayList<OrdreLinje> liste = new ArrayList<>();
         liste.add(ordrelinje);
         liste.add(ordrelinje2);
         Clock fakeClock = Clock.fixed(Instant.parse("2026-03-26T12:00:00Z"), ZoneId.of("UTC"));
-        ordre = new Ordre( Duration.ofMinutes(0), liste, "", fakeClock);
-        menu = new Menu();
-        menu.bygStandardMenu();
+        ordre = new Ordre(Duration.ofMinutes(0), liste, "", fakeClock);
     }
 
 
@@ -66,7 +67,7 @@ class OrdreTest {
     void getTotal() {
 
         // arrange
-        double expected = 3* menu.getMenuLinjer().get(6).getPris() + 4 * menu.getMenuLinjer().get(9).getPris();
+        double expected = 3 * menu.getMenuLinjer().get(1).getPris() + 4 * menu.getMenuLinjer().get(1).getPris();
 
         //act
         double actual = ordre.getTotal();

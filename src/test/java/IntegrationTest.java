@@ -33,15 +33,41 @@ class IntegrationTest {
         //arrange
         MenuLinje menuLinje = menu.getMenuLinjer().get(0);
         double expected = menuLinje.getPris();
-        OrdreLinje ordreLinje = new OrdreLinje(1, menuLinje);
-        ordre.addOrder(ordreLinje);
+        ordre.addOrder(0, 1, menu);
         gemteOrdrer.tilføjOrdre(ordre);
         //act
         menuLinje.setPris(20);
-        double actual = gemteOrdrer.getOrdreListe().get(0).getOrdre().get(0).getPris();
+        double actual = gemteOrdrer.getOrdreFraID(0).getOrdreLinjer().get(0).getPris();
         //assert
         assertEquals(expected, actual);
     }
 
+    @Test
+    void menuGetMenuLinjerExposesInternalList() {
+        menu.getMenuLinjer().clear();
+        assertTrue(menu.getMenuLinjer().isEmpty());
+    }
+
+    @Test
+    void gemteOrdrerGetOrdreListeExposesInternalMap() {
+        gemteOrdrer.tilføjOrdre(ordre);
+        assertEquals(1, gemteOrdrer.getOrdreListe().size());
+
+        gemteOrdrer.getOrdreListe().clear();
+        assertEquals(0, gemteOrdrer.getOrdreListe().size());
+    }
+
+    @Test
+    void betalingOpdatererMenuLinjeSolgteViaOrdreLinjeReference() {
+        MenuLinje menuLinje = menu.getMenuLinjer().get(2);
+        OrdreLinje ordreLinje = new OrdreLinje(2, menuLinje);
+        ordre.addOrder(ordreLinje);
+
+        assertEquals(0, menuLinje.getSolgte());
+
+        ordre.betal();
+
+        assertEquals(2, menuLinje.getSolgte());
+    }
 
 }

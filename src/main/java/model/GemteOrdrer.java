@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import UI.Styles;
 
 public class GemteOrdrer {
     private HashMap<Integer, Ordre> ordreListe;
@@ -11,14 +12,19 @@ public class GemteOrdrer {
         this.nextId = 0;
     }
 
-    public HashMap<Integer, Ordre> getOrdreListe() {
-        return ordreListe;
+    public Ordre getOrdreFraID (int id) {
+        return ordreListe.get(id);
     }
+
 
     private Integer nextId() {
         Integer ID = nextId;
         nextId ++;
         return ID;
+    }
+
+    public void færdigørOrdre(int ordreID) {
+        ordreListe.get(ordreID).færdigOrdre();
     }
 
     public double omsætning () {
@@ -45,7 +51,7 @@ public class GemteOrdrer {
         return string;
     }
 
-    public String toStringConcise() {
+    public String toStringConcise() {   // for færdiggør ordre
         String string = "";
 
         for (HashMap.Entry<Integer, Ordre> entry : ordreListe.entrySet()) {
@@ -53,13 +59,18 @@ public class GemteOrdrer {
             Ordre ordre = entry.getValue();
 
             String betalt = ordre.isBetalt()
-                    ? "\u001B[32mbetalt\u001B[0m"
-                    : "\u001B[31mikke betalt\u001B[0m";
+                    ? Styles.success("betalt")
+                    : Styles.error("ikke betalt");
 
-            string += String.format("ID: %-5d %-7.2fkr %-15s%n",
+            String status = ordre.getOrdreStatus() == "færdig"
+                    ? Styles.success(ordre.getOrdreStatus())
+                    : Styles.error(ordre.getOrdreStatus());
+
+            string += String.format("ID: %-5d %-7.2fkr %-40s %-40s\n",
                     id,
                     ordre.getTotal(),
-                    betalt);
+                    betalt,
+                    status);
         }
 
         return string;
