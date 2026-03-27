@@ -1,23 +1,23 @@
-//public class OrdreLinje {
+package model;//public class model.OrdreLinje {
 //    private int antal;
-//    private Pizza pizza;
+//    private model.Pizza pizza;
 //    private double pris;
 //    private int nr;
 //
 //
-//    public OrdreLinje(int antal, MenuLinje menuLinje) {
+//    public model.OrdreLinje(int antal, model.MenuLinje menuLinje) {
 //        this(antal, menuLinje.getPris(), menuLinje.getPizza(), menuLinje.getNr());
 //    }
 //
-//    public OrdreLinje(int antal, double pris, Pizza pizza, int nr){
+//    public model.OrdreLinje(int antal, double pris, model.Pizza pizza, int nr){
 //        this.antal = antal;
 //        this.pris = pris;
 //        this.pizza = pizza;
 //        this.nr = nr;
 //    }
 //
-//    public void sælg(Menu menu) {
-//        for (MenuLinje menuLinje: menu.getMenuLinjer()) {
+//    public void sælg(model.Menu menu) {
+//        for (model.MenuLinje menuLinje: menu.getMenuLinjer()) {
 //            if (menuLinje.getNr() == nr) menuLinje.sælg();
 //        }
 //    }
@@ -27,7 +27,7 @@
 //        return antal;
 //    }
 //
-//    public Pizza getPizza() {
+//    public model.Pizza getPizza() {
 //        return pizza;
 //    }
 //
@@ -50,7 +50,7 @@ public class OrdreLinje {
     private double pris;
 
 
-//    public OrdreLinje(int antal, MenuLinje menuLinje) {
+//    public model.OrdreLinje(int antal, model.MenuLinje menuLinje) {
 //        this.antal = antal;
 //        this.menuLinje = menuLinje;
 //    }

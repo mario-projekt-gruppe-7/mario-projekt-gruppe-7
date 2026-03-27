@@ -1,3 +1,6 @@
+import model.Menu;
+import model.MenuLinje;
+import model.OrdreLinje;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

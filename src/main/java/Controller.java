@@ -1,5 +1,10 @@
 // Det er Controller-laget i MVC (model view controller) arkitektur.
 
+import UI.Styles;
+import UI.AsciiPrinter;
+import UI.UI;
+import model.*;
+
 import java.time.Clock;
 
 public class Controller {
@@ -27,7 +32,7 @@ public class Controller {
     private void mainMenu() {
         boolean fortsæt = true;
         while (fortsæt) {
-            int choice = ui.inputValgmuligheder("velkommen til Marios Pizza \uD83C\uDF55  \n" +
+            int choice = ui.inputValgmuligheder("velkommen til Marios model.Pizza \uD83C\uDF55  \n" +
                     Styles.navigation(
                             "[0] exit.\n" +
                                     "[1] opret en ordre\n" +

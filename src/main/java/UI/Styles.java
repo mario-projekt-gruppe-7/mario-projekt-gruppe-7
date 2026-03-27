@@ -1,3 +1,5 @@
+package UI;
+
 public final class Styles {
 
     private Styles() {} // kan ikke instantieres

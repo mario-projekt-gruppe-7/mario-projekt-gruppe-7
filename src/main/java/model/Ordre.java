@@ -1,6 +1,6 @@
+package model;
+
 import java.time.*;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 
 public class Ordre {

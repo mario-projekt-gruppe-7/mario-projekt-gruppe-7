@@ -1,3 +1,5 @@
+package model;
+
 public class KundeLinje {
     private int kundeID;
     private String fornavn;

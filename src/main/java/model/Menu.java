@@ -1,3 +1,7 @@
+package model;
+
+import UI.Styles;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +41,7 @@ public class Menu {
 
     @Override
     public String toString (){
-        String menuStreng = Styles.fed("                     ------Menu-----\n");
+        String menuStreng = Styles.fed("                     ------model.Menu-----\n");
         for (MenuLinje menuLinje : pizzaer) {
             menuStreng += menuLinje + "\n\n";
         }
