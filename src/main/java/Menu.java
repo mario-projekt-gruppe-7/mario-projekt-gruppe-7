@@ -37,12 +37,13 @@ public class Menu {
 
     @Override
     public String toString (){
-        String menuStreng = "-------Menu--------\n";
+        String menuStreng = Styles.fed("                     ------Menu-----n");
         for (MenuLinje menuLinje : pizzaer) {
             menuStreng += menuLinje + "\n\n";
         }
         return menuStreng;
     }
+
 
     public String topSolgtePizzaer(int pizzaerAtVise) {
         Menu sortedMenu = new Menu();
