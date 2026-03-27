@@ -48,7 +48,7 @@ public final class Styles {
 
 
     public static String navigation(String text) {
-        return farve(text, Farve.ORANGE);
+        return farve(text, Farve.YELLOW);
     }
 
     public static String success(String text) {

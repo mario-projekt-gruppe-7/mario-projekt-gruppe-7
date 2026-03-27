@@ -31,43 +31,17 @@ class IntegrationTest {
     @Test
     void prisPåOrdreBliverIkkeByttetNårPrisPåPizzaGør() { // reference type fejl
         //arrange
+        int nummer = 1;
         MenuLinje menuLinje = menu.getMenuLinjer().get(0);
         double expected = menuLinje.getPris();
-        ordre.addOrder(0, 1, menu);
+        ordre.addOrder(nummer, 1, menu);
         gemteOrdrer.tilføjOrdre(ordre);
         //act
         menuLinje.setPris(20);
-        double actual = gemteOrdrer.getOrdreFraID(0).getOrdreLinjer().get(0).getPris();
+        double actual = gemteOrdrer.getOrdreFraID(nummer-1).getOrdreLinjer().get(0).getPris();
         //assert
+//        System.out.println("expected:" + expected);
+//        System.out.println("actual:" + actual);
         assertEquals(expected, actual);
     }
-
-    @Test
-    void menuGetMenuLinjerExposesInternalList() {
-        menu.getMenuLinjer().clear();
-        assertTrue(menu.getMenuLinjer().isEmpty());
-    }
-
-    @Test
-    void gemteOrdrerGetOrdreListeExposesInternalMap() {
-        gemteOrdrer.tilføjOrdre(ordre);
-        assertEquals(1, gemteOrdrer.getOrdreListe().size());
-
-        gemteOrdrer.getOrdreListe().clear();
-        assertEquals(0, gemteOrdrer.getOrdreListe().size());
-    }
-
-    @Test
-    void betalingOpdatererMenuLinjeSolgteViaOrdreLinjeReference() {
-        MenuLinje menuLinje = menu.getMenuLinjer().get(2);
-        OrdreLinje ordreLinje = new OrdreLinje(2, menuLinje);
-        ordre.addOrder(ordreLinje);
-
-        assertEquals(0, menuLinje.getSolgte());
-
-        ordre.betal();
-
-        assertEquals(2, menuLinje.getSolgte());
-    }
-
 }

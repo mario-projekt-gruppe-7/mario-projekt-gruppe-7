@@ -42,7 +42,7 @@ public class Ordre {
     }
 
     public void addOrder(int nummer, int antal, Menu menu){
-        ordreLinjer.add(new OrdreLinje(antal, menu.getMenuLinjeFraNummer(nummer)));
+        ordreLinjer.add(new OrdreLinje(antal, menu.getMenuLinjeFraNummer(nummer-1)));
     }
 
     public void udskydTilFremtiden(Duration afhentningsTidsMængde){

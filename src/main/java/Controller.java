@@ -6,6 +6,7 @@ import UI.UI;
 import model.*;
 
 import java.time.Clock;
+import java.time.LocalDateTime;
 
 public class Controller {
     private UI ui;
@@ -14,8 +15,8 @@ public class Controller {
     private Clock clock;
     private FasteKunder fasteKunder;
 
-    public Controller(Menu menu, Clock clock) {
-        ui = new UI();
+    public Controller(Menu menu, Clock clock, UI ui) {
+        this.ui = ui;
         this.menu = menu;
         this.clock = clock;
         gemteOrdrer = new GemteOrdrer();
@@ -32,7 +33,7 @@ public class Controller {
     private void mainMenu() {
         boolean fortsæt = true;
         while (fortsæt) {
-            int choice = ui.inputValgmuligheder("velkommen til Marios model.Pizza \uD83C\uDF55  \n" +
+            int choice = ui.inputValgmuligheder("Velkommen til Marios Pizza! \uD83C\uDF55  \n" +
                     Styles.navigation(
                             "[0] exit.\n" +
                                     "[1] opret en ordre\n" +
@@ -112,11 +113,12 @@ public class Controller {
         ordre.setAfhentningTidspunkt(ui.inputMinutter("Om hvor mange minutter vil du hente pizzaen?"));
         boolean betalt = ui.inputBoolean("Er ordren betalt? (j/n)");
         if (betalt) ordre.betal();
+        LocalDateTime tidspunkt = ordre.getAfhentningTidspunkt();
         System.out.println(Styles.success(String.format(
-                "Du har bestilt: \n " +
+                "Du har bestilt:\n" +
                         ordre +
                         "\nOrdren kan hentes: " +
-                        ordre.getAfhentningTidspunkt() +
+                        String.format("%s  kl %s : %s", tidspunkt.getDayOfWeek(), tidspunkt.getHour(), tidspunkt.getMinute()) +
                         "\n")));
         gemteOrdrer.tilføjOrdre(ordre);
         ui.enterForExit();
