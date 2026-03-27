@@ -47,10 +47,22 @@
 public class OrdreLinje {
     private int antal;
     private MenuLinje menuLinje;
+    private double pris;
+
+
+//    public OrdreLinje(int antal, MenuLinje menuLinje) {
+//        this.antal = antal;
+//        this.menuLinje = menuLinje;
+//    }
 
     public OrdreLinje(int antal, MenuLinje menuLinje) {
+        this(antal, menuLinje.getPris(), menuLinje);
+    }
+
+    public OrdreLinje(int antal, double pris, MenuLinje menuLinje) {
         this.antal = antal;
         this.menuLinje = menuLinje;
+        this.pris = pris;
     }
 
     // metode virker ikke fordi vi mangler reference menuLinje i kopiering
@@ -68,7 +80,7 @@ public class OrdreLinje {
     }
 
     public double getPris() {
-        return menuLinje.getPris() * antal;
+        return pris * antal;
     }
     public String toString() {
         return String.format("%s x %s ... %s kr", antal, menuLinje.getNr(), getPris());
