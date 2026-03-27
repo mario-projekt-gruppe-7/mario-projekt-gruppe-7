@@ -8,7 +8,7 @@ public class UI {
         scanner = new Scanner(System.in);
     }
 
-    public String inputString (String brugerInstruks) {
+    public String inputString(String brugerInstruks) {
         System.out.println(brugerInstruks);
         return scanner.nextLine();
     }
@@ -24,12 +24,12 @@ public class UI {
                 case "nej", "n" -> {
                     return false;
                 }
-                default -> System.out.println("skriv ja eller nej");
+                default -> System.out.println(Styles.error("skriv ja eller nej"));
             }
         }
     }
 
-    public int inputInt (String brugerInstruks) {
+    public int inputInt(String brugerInstruks) {
         System.out.println(brugerInstruks);
         while (true) {
             if (scanner.hasNextInt()) {
@@ -38,10 +38,11 @@ public class UI {
                 return returnValue;
             }
             scanner.nextLine();
-            System.out.println("Skriv et heltal");
+            System.out.println(Styles.error("Skriv et heltal"));
         }
     }
-    public int inputInt () {
+
+    public int inputInt() {
         while (true) {
             if (scanner.hasNextInt()) {
                 int returnValue = scanner.nextInt();
@@ -49,7 +50,7 @@ public class UI {
                 return returnValue;
             }
             scanner.nextLine();
-            System.out.println("Skriv et heltal");
+            System.out.println(Styles.error("Skriv et heltal"));
         }
     }
 
@@ -62,7 +63,7 @@ public class UI {
                 return returnValue;
             }
             scanner.nextLine();
-            System.out.println("Skriv et tal");
+            System.out.println(Styles.error("Skriv et tal"));
         }
 
     }
@@ -76,7 +77,7 @@ public class UI {
                 return returnValue;
             }
             scanner.nextLine();
-            System.out.println("Skriv et tal");
+            System.out.println(Styles.error("Skriv et tal"));
         }
     }
 
@@ -87,16 +88,12 @@ public class UI {
             if (valg >= min && valg <= max) {
                 return valg;
             }
-            System.out.printf("Ugyldigt valg (skal være mellem %d og %d)%n", min, max);
+            System.out.printf(Styles.error(String.format("Ugyldigt valg (skal være mellem %d og %d)\n", min, max)));
         }
     }
 
     public void enterForExit() {
-        System.out.println("enter for exit");
+        System.out.println(Styles.navigation("enter for exit"));
         scanner.nextLine();
     }
-
-    public void fortsæt() {
-        scanner.nextLine();
-    }
-    }
+}

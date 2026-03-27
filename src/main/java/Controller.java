@@ -28,14 +28,15 @@ public class Controller {
         boolean fortsæt = true;
         while (fortsæt) {
             int choice = ui.inputValgmuligheder("velkommen til Marios Pizza \uD83C\uDF55  \n" +
-                    "Skriv 0 for exit.\n" +
-                    "Skriv 1 for opret en ordre\n" +
-                    "Skriv 2 for at printe menu\n" +
-                    "Skriv 3 for at printe alle ordrer\n" +
-                    "Skriv 4 for at se hele omsætning\n" +
-                    "Skriv 5 for at printe top solgte pizzaer\n" +
-                    "Skriv 6 for at færdiggøre en ordre\n"+
-                    "Skriv 7 for at oprette en kunde", 0, 7);
+                    Styles.navigation(
+                            "[0] exit.\n" +
+                                    "[1] opret en ordre\n" +
+                                    "[2] print menu\n" +
+                                    "[3] print alle ordrer\n" +
+                                    "[4] se hele omsætning\n" +
+                                    "[5] print top solgte pizzaer\n" +
+                                    "[6] færdiggør en ordre\n" + 
+                                    "[7] opret en kunde), 0, 7);
 
 
             switch (choice) {
@@ -60,14 +61,17 @@ public class Controller {
         System.out.println(menu);
 
         int beslutningsNummer = ui.inputValgmuligheder(
-                "0 for exit\n" +
-                        "1 hvis du vil ændre pris",
+                Styles.navigation(
+                        "[0] exit\n" +
+                                "[1] ændre pris"),
                 0,
                 1
         );
 
         switch (beslutningsNummer) {
-            case 0 -> ui.fortsæt();
+            case 0 -> {
+                return;
+            }
             case 1 -> redigerMenu();
         }
     }
@@ -81,7 +85,11 @@ public class Controller {
         menu.setPris(nummer, pris);
         for (MenuLinje menuLinje : menu.getMenuLinjer()) {
             if (menuLinje.getNr() == nummer) {
-                System.out.println("du har opdateret prisen på:" + menuLinje.getPizza().getNavn() + "\n" + menu.toString());
+                System.out.println(
+                        "du har opdateret prisen på:" +
+                                menuLinje.getPizza().getNavn() +
+                                "\n" +
+                                menu.toString());
             }
         }
     }
@@ -99,7 +107,12 @@ public class Controller {
         ordre.setAfhentningTidspunkt(ui.inputMinutter("Om hvor mange minutter vil du hente pizzaen?"));
         boolean betalt = ui.inputBoolean("Er ordren betalt? (j/n)");
         if (betalt) ordre.betal();
-        System.out.println(String.format("Du har bestilt: \n %s", ordre + "\nOrdren kan hentes: " + ordre.getAfhentningTidspunkt() + "\n"));
+        System.out.println(Styles.success(String.format(
+                "Du har bestilt: \n " +
+                        ordre +
+                        "\nOrdren kan hentes: " +
+                        ordre.getAfhentningTidspunkt() +
+                        "\n")));
         gemteOrdrer.tilføjOrdre(ordre);
         ui.enterForExit();
     }
@@ -119,7 +132,7 @@ public class Controller {
         System.out.println(gemteOrdrer.toStringConcise());
         int ordreID = ui.inputInt("skriv ID på ordren du vil færdiggøre");
         gemteOrdrer.getOrdreListe().get(ordreID).færdigOrdre();
-            System.out.println("Ordren er færdig");
+            System.out.println(Styles.success("Ordren er færdig"));
         }
 
     private void opretFastKunde(){
