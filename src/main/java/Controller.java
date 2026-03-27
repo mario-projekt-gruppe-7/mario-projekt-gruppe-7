@@ -1,6 +1,12 @@
 // Det er Controller-laget i MVC (model view controller) arkitektur.
 
+import UI.Styles;
+import UI.AsciiPrinter;
+import UI.UI;
+import model.*;
+
 import java.time.Clock;
+import java.time.LocalDateTime;
 
 public class Controller {
     private UI ui;
@@ -9,8 +15,8 @@ public class Controller {
     private Clock clock;
     private FasteKunder fasteKunder;
 
-    public Controller(Menu menu, Clock clock) {
-        ui = new UI();
+    public Controller(Menu menu, Clock clock, UI ui) {
+        this.ui = ui;
         this.menu = menu;
         this.clock = clock;
         gemteOrdrer = new GemteOrdrer();
@@ -27,7 +33,7 @@ public class Controller {
     private void mainMenu() {
         boolean fortsæt = true;
         while (fortsæt) {
-            int choice = ui.inputValgmuligheder("velkommen til Marios Pizza \uD83C\uDF55  \n" +
+            int choice = ui.inputValgmuligheder("Velkommen til Marios Pizza! \uD83C\uDF55  \n" +
                     Styles.navigation(
                             "[0] exit.\n" +
                                     "[1] opret en ordre\n" +
@@ -100,18 +106,19 @@ public class Controller {
         while (flere) {
             int nummer = ui.inputInt("skriv nummeret på pizzaen du vil have:");
             int antal = ui.inputInt("skriv antallet af pizzaer du vil have: ");
-            ordre.addOrder(new OrdreLinje(antal, menu.getMenuLinjer().get(nummer)));
+            ordre.addOrder(nummer, antal, menu);
             flere = ui.inputBoolean("Vil du have flere pizzaer? Skriv ja/nej");
         }
 
         ordre.setAfhentningTidspunkt(ui.inputMinutter("Om hvor mange minutter vil du hente pizzaen?"));
         boolean betalt = ui.inputBoolean("Er ordren betalt? (j/n)");
         if (betalt) ordre.betal();
+        LocalDateTime tidspunkt = ordre.getAfhentningTidspunkt();
         System.out.println(Styles.success(String.format(
-                "Du har bestilt: \n " +
+                "Du har bestilt:\n" +
                         ordre +
                         "\nOrdren kan hentes: " +
-                        ordre.getAfhentningTidspunkt() +
+                        String.format("%s  kl %s : %s", tidspunkt.getDayOfWeek(), tidspunkt.getHour(), tidspunkt.getMinute()) +
                         "\n")));
         gemteOrdrer.tilføjOrdre(ordre);
         ui.enterForExit();
@@ -131,7 +138,7 @@ public class Controller {
     private void færdigOrdre() {
         System.out.println(gemteOrdrer.toStringConcise());
         int ordreID = ui.inputInt("skriv ID på ordren du vil færdiggøre");
-        gemteOrdrer.getOrdreListe().get(ordreID).færdigOrdre();
+        gemteOrdrer.færdigørOrdre(ordreID);
             System.out.println(Styles.success("Ordren er færdig"));
         }
 

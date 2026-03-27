@@ -1,3 +1,7 @@
+package model;
+
+import UI.Styles;
+
 public class MenuLinje {
     private Pizza pizza;
     private double pris;

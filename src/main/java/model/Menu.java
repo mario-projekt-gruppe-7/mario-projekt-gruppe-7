@@ -1,3 +1,7 @@
+package model;
+
+import UI.Styles;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +34,9 @@ public class Menu {
     public ArrayList<MenuLinje> getMenuLinjer() {
         return pizzaer;
     }
+    public MenuLinje getMenuLinjeFraNummer(int nummer) {
+        return pizzaer.get(nummer);
+    }
 
     public void tilføjMenuLinje(MenuLinje menuLinje) {
         pizzaer.add(menuLinje);
@@ -37,7 +44,7 @@ public class Menu {
 
     @Override
     public String toString (){
-        String menuStreng = Styles.fed("                     ------Menu-----\n");
+        String menuStreng = Styles.fed("                     ------model.Menu-----\n");
         for (MenuLinje menuLinje : pizzaer) {
             menuStreng += menuLinje + "\n\n";
         }
@@ -50,7 +57,7 @@ public class Menu {
         for (MenuLinje menuLinje: pizzaer) {
             sortedMenu.tilføjMenuLinje(menuLinje);
         }
-        sortedMenu.pizzaer.sort((a, b) -> a.getSolgte()- b.getSolgte());
+        sortedMenu.pizzaer.sort((a, b) -> b.getSolgte() - a.getSolgte());
 
         String string = String.format("De %s mest solgte pizzaer er:\n", pizzaerAtVise);
         List<MenuLinje> topLinjer = sortedMenu.getMenuLinjer().subList( 0, pizzaerAtVise);

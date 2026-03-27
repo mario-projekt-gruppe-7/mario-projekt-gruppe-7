@@ -1,3 +1,4 @@
+import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,17 +31,17 @@ class IntegrationTest {
     @Test
     void prisPåOrdreBliverIkkeByttetNårPrisPåPizzaGør() { // reference type fejl
         //arrange
+        int nummer = 1;
         MenuLinje menuLinje = menu.getMenuLinjer().get(0);
         double expected = menuLinje.getPris();
-        OrdreLinje ordreLinje = new OrdreLinje(1, menuLinje);
-        ordre.addOrder(ordreLinje);
+        ordre.addOrder(nummer, 1, menu);
         gemteOrdrer.tilføjOrdre(ordre);
         //act
         menuLinje.setPris(20);
-        double actual = gemteOrdrer.getOrdreListe().get(0).getOrdre().get(0).getPris();
+        double actual = gemteOrdrer.getOrdreFraID(nummer-1).getOrdreLinjer().get(0).getPris();
         //assert
+//        System.out.println("expected:" + expected);
+//        System.out.println("actual:" + actual);
         assertEquals(expected, actual);
     }
-
-    
 }

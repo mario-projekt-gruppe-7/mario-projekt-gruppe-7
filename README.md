@@ -1,6 +1,6 @@
 # Velkommen til Gruppe 7s Mario Projekt
 
-Dette repository indeholder gruppe 7's opgavebesvarelse til opgaven "Mario's Pizza" på EK's datamatikeruddannelse. I opgaven skulle vi udvikle et IT-system til et pizzaria. 
+Dette repository indeholder gruppe 7's opgavebesvarelse til opgaven "Mario's model.Pizza" på EK's datamatikeruddannelse. I opgaven skulle vi udvikle et IT-system til et pizzaria. 
 Se opgaven [her](src/main/resources/opgave.pdf)
 
 Opgaven er afleveret 27. marts 2026
