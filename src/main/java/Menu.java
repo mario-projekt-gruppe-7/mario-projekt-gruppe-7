@@ -37,7 +37,7 @@ public class Menu {
 
     @Override
     public String toString (){
-        String menuStreng = Styles.fed("                     ------Menu-----n");
+        String menuStreng = Styles.fed("                     ------Menu-----\n");
         for (MenuLinje menuLinje : pizzaer) {
             menuStreng += menuLinje + "\n\n";
         }
