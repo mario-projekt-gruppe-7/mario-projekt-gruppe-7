@@ -94,10 +94,6 @@ public class Ordre {
 
     }
 
-    public void setBetalt(boolean betalt) {
-        this.betalt = betalt;
-    }
-
     public void færdigOrdre() {
         this.ordreStatus = "færdig";
     }
