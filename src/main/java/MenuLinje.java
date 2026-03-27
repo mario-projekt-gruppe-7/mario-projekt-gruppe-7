@@ -35,7 +35,19 @@ public class MenuLinje {
         return nr;
     }
 
+    @Override
     public String toString (){
-        return nr + " " + pizza.getNavn() + pizza.getToppings()+" " + pris + " kr";
+
+        String toppings = "(";
+
+        for (String topping : pizza.getToppings()) {
+            toppings += topping + ", ";
+        }
+        toppings = toppings.substring(0, toppings.length()-2) + ")";
+
+        String pizzaString = Styles.fed(pizza.getNavn()) + Styles.detalje(toppings);
+
+        return String.format("#%-2s %-92s %6.2f kr", nr, pizzaString, pris);
+
     }
 }
